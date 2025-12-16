@@ -1,0 +1,13 @@
+input,
+input::placeholder,
+textarea::placeholder,
+select {
+  color: rgb(32, 32, 32);
+  opacity: 1;
+}
+
+label {
+  color: rgb(241, 241, 241);
+  font-size: 15px;
+  margin-bottom: 4px;
+}

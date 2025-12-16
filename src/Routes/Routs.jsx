@@ -5,6 +5,11 @@ import Register from "../Components/Authentication/Register/Register";
 import Error404 from "../Error/Error404";
 import Home from "../Pages/Home";
 import Root from "../Pages/Root";
+import PrivateRoute from "../Provider/PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import DashboardMain from "../Components/Dashboard/DashboardMain";
+import CreateDonationRequest from "../Components/Dashboard/CreateDonationRequest/CreateDonationRequest";
+import MyDonationRequest from "../Components/Dashboard/MyDonationRequest/MyDonationRequest";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,28 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <Error404></Error404>,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardMain></DashboardMain>,
+      },
+      {
+        path: "/dashboard/create-donation-request",
+        element: <CreateDonationRequest></CreateDonationRequest>,
+      },
+      {
+        path: "/dashboard/my-donation-requests",
+        element: <MyDonationRequest></MyDonationRequest>,
+      },
+    ],
   },
 ]);
 
