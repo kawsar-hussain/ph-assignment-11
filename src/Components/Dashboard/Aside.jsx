@@ -1,12 +1,38 @@
-import React, { useContext } from "react";
-import { Link } from "react-router";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaRegUserCircle, FaUsers } from "react-icons/fa";
+import { MdOutlineDashboardCustomize, MdOutlineSdStorage } from "react-icons/md";
+import { IoCreateOutline } from "react-icons/io5";
+import { IoIosGitPullRequest, IoIosLogOut } from "react-icons/io";
+import axios from "axios";
+import { HiOutlineHome } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 const Aside = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const [dbUser, setDbUser] = useState("");
+  const navigate = useNavigate();
 
-  console.log(user);
+  useEffect(() => {
+    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+      // console.log(res.data.role);
+      setDbUser(res.data);
+
+      console.log(res.data);
+    });
+  }, [user]);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Successfully logged out.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    navigate("/");
+  };
 
   return (
     <div className="">
@@ -23,10 +49,8 @@ const Aside = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-
-          <div className="menu lg:bg-[#00000034] bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm   min-h-screen w-80 p-4">
+          <div className="menu lg:bg-[#0000005f] bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm   min-h-screen w-80 p-4">
             {/* Sidebar content here */}
-
             <div className="mt-4 ">
               <div className="w-full aspect-square ">
                 <Link>
@@ -35,15 +59,47 @@ const Aside = () => {
                 </Link>
               </div>
             </div>
-            <div className="text-center pt-3 pb-5">
+            <div className="text-center pt-3 pb-8">
               <p className="text-white  text-xl font-bold ">{user.displayName}</p>
-              <p className="text-sm text-gray-300">Admin</p>
+              <p className="text-sm text-gray-300">{dbUser.role}</p>
             </div>
-
-            <div className="flex flex-col gap-1.5 *:bg-[#ffdfdf] *:rounded *:py-1.5 *:px-2 *:font-semibold">
-              <Link to="/dashboard/my-donation-requests">My Donation Request</Link>
-              <Link to="/dashboard/create-donation-request">Create Donation Request</Link>
-              <Link>Profile</Link>
+            <div className="">
+              <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold aside-div">
+                <NavLink to="/dashboard" className="flex gap-4 items-center" end>
+                  <MdOutlineDashboardCustomize className="text-xl" /> Dashboard
+                </NavLink>
+                <NavLink to="/dashboard/all-users" className="flex gap-4 items-center">
+                  <FaUsers className="text-xl" /> Users
+                </NavLink>
+                <NavLink to="/dashboard/create-donation-request" className="flex gap-4 items-center">
+                  {" "}
+                  <IoCreateOutline className="text-xl" />
+                  Create Donation Request
+                </NavLink>
+                <NavLink to="/dashboard/my-donation-requests" className="flex gap-4 items-center">
+                  {" "}
+                  <IoIosGitPullRequest className="text-xl" /> My Donation Request
+                </NavLink>
+                <NavLink to="/dashboard/all-blood-donation-request" className="flex gap-4 items-center">
+                  {" "}
+                  <IoIosGitPullRequest className="text-xl" /> All Donation Request
+                </NavLink>
+                <NavLink to="/dashboard/profile" className="flex gap-4 items-center">
+                  <FaRegUserCircle className="text-xl" /> Profile
+                </NavLink>
+              </div>
+            </div>
+            {/* home and logout */}
+            <div className="absolute bottom-6 text-white">
+              <Link to="/" className="flex text-md gap-2 mb-3">
+                {" "}
+                <HiOutlineHome className="text-xl " /> Home
+              </Link>
+              <button onClick={handleLogOut} className="flex text-md gap-2 cursor-pointer">
+                {" "}
+                <IoIosLogOut className="text-xl " />
+                Logout
+              </button>
             </div>
           </div>
         </div>

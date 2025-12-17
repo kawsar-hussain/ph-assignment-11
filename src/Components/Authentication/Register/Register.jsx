@@ -85,6 +85,7 @@ const Register = () => {
       district,
       upazila,
       password,
+      status: "active",
     };
 
     console.log(formData);

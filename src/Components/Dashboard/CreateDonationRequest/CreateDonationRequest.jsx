@@ -41,16 +41,25 @@ const CreateDonationRequest = () => {
       requesterEmail: form.requesterEmail.value,
       recipientName: form.recipientName.value,
       bloodGroup: form.bloodGroup.value,
-      recipientDistrict: form.recipientDistrict.value,
-      recipientUpazila: form.recipientUpazila.value,
+      district: form.recipientDistrict.value,
+      upazila: form.recipientUpazila.value,
       hospitalName: form.hospitalName.value,
       fullAddress: form.fullAddress.value,
       donationDate: form.donationDate.value,
       donationTime: form.donationTime.value,
-      requestMessage: form.requestMessage.value,
+      message: form.requestMessage.value,
     };
 
     console.log(formData);
+
+    axios
+      .post("http://localhost:3000/create-donation-request", formData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

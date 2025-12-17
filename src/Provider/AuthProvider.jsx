@@ -10,7 +10,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [role, setRole] = useState("");
+  const [dbUser, setDbuser] = useState("");
 
   // console.log(user);
 
@@ -44,9 +44,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user) return;
-    axios.get(`http://localhost:3000/users/role/${user.email}`).then((res) => {
-      console.log(res.data.role);
-      setRole(res.data.role);
+    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+      // console.log(res.data.role);
+      setDbuser(res.data);
+
+      console.log(res.data);
     });
   }, [user]);
 
@@ -59,7 +61,10 @@ const AuthProvider = ({ children }) => {
     setLoading,
     updateUser,
     setUser,
-    role,
+    role: dbUser.role,
+    district: dbUser.district,
+    upazila: dbUser.upazila,
+    status: dbUser.status,
   };
   return <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>;
 };

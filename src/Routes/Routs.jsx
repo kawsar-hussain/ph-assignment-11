@@ -10,6 +10,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashboardMain from "../Components/Dashboard/DashboardMain";
 import CreateDonationRequest from "../Components/Dashboard/CreateDonationRequest/CreateDonationRequest";
 import MyDonationRequest from "../Components/Dashboard/MyDonationRequest/MyDonationRequest";
+import Users from "../Components/Dashboard/Users/Users";
+import AllRequest from "../Components/Dashboard/AllRequest/AllRequest";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-donation-requests",
         element: <MyDonationRequest></MyDonationRequest>,
+      },
+      {
+        path: "/dashboard/all-users",
+        element: <Users></Users>,
+      },
+      {
+        path: "/dashboard/all-blood-donation-request",
+        element: <AllRequest></AllRequest>,
       },
     ],
   },

@@ -1,8 +1,11 @@
-input,
 input::placeholder,
-textarea::placeholder,
+textarea::placeholder {
+  color: rgb(132, 132, 132);
+  opacity: 1;
+}
+
 select {
-  color: rgb(32, 32, 32);
+  color: rgb(36, 36, 36);
   opacity: 1;
 }
 
