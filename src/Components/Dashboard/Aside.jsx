@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaBars, FaRegUserCircle, FaUsers } from "react-icons/fa";
-import { MdOutlineDashboardCustomize, MdOutlineSdStorage } from "react-icons/md";
+import { MdOutlineDashboardCustomize, MdOutlineSdStorage, MdVerified } from "react-icons/md";
 import { IoCreateOutline } from "react-icons/io5";
 import { IoIosGitPullRequest, IoIosLogOut } from "react-icons/io";
+import { VscRequestChanges } from "react-icons/vsc";
 import axios from "axios";
 import { HiOutlineHome } from "react-icons/hi";
 import { toast } from "react-toastify";
@@ -61,10 +62,12 @@ const Aside = () => {
             </div>
             <div className="text-center pt-3 pb-8">
               <p className="text-white  text-xl font-bold ">{user.displayName}</p>
-              <p className="text-sm text-gray-300">{dbUser.role}</p>
+              <p className="text-md mt-1 text-gray-300 flex items-center justify-center gap-1 capitalize">
+                <MdVerified className="text-xl text-[#1b76ff]" /> {dbUser.role}
+              </p>
             </div>
             <div className="">
-              <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold aside-div">
+              <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold *:hover:bg-[#0000003b] aside-div">
                 <NavLink to="/dashboard" className="flex gap-4 items-center" end>
                   <MdOutlineDashboardCustomize className="text-xl" /> Dashboard
                 </NavLink>
@@ -82,7 +85,7 @@ const Aside = () => {
                 </NavLink>
                 <NavLink to="/dashboard/all-blood-donation-request" className="flex gap-4 items-center">
                   {" "}
-                  <IoIosGitPullRequest className="text-xl" /> All Donation Request
+                  <VscRequestChanges className="text-xl" /> All Donation Request
                 </NavLink>
                 <NavLink to="/dashboard/profile" className="flex gap-4 items-center">
                   <FaRegUserCircle className="text-xl" /> Profile

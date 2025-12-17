@@ -12,6 +12,10 @@ import CreateDonationRequest from "../Components/Dashboard/CreateDonationRequest
 import MyDonationRequest from "../Components/Dashboard/MyDonationRequest/MyDonationRequest";
 import Users from "../Components/Dashboard/Users/Users";
 import AllRequest from "../Components/Dashboard/AllRequest/AllRequest";
+import Profile from "../Components/Dashboard/Profile/Profile";
+import DonationRequests from "../Pages/DonationRequests/DonationRequestsPage";
+import Funding from "../Pages/Funding/Funding";
+import DonationRequestDetails from "../Components/DonationRequests/DonationRequestDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +42,19 @@ const router = createBrowserRouter([
             <Register></Register>
           </RedirectIfAuthenticated>
         ),
+      },
+      {
+        path: "donation-requests",
+        element: <DonationRequests></DonationRequests>,
+      },
+      {
+        path: "donation-requests/:id",
+        element: <DonationRequestDetails></DonationRequestDetails>,
+      },
+
+      {
+        path: "funding",
+        element: <Funding></Funding>,
       },
     ],
   },
@@ -72,6 +89,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-blood-donation-request",
         element: <AllRequest></AllRequest>,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
       },
     ],
   },

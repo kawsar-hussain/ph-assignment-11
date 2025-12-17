@@ -11,8 +11,18 @@ const Navbar = () => {
   const li = (
     <>
       <li>
-        <NavLink to="/" className=" text-white">
+        <NavLink to="/" className="text-[#dfdfdf]">
           Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/donation-requests" className="text-[#dfdfdf]">
+          Donate
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/funding" className="text-[#dfdfdf]">
+          Funding
         </NavLink>
       </li>
     </>
@@ -54,7 +64,7 @@ const Navbar = () => {
 
       <div className="navbar-end flex gap-1.5">
         <div className="navbar-center hidden lg:flex mr-3">
-          <ul className="menu menu-horizontal px-1 font-medium menu-nav">{li}</ul>
+          <ul className="menu menu-horizontal px-1 font-medium menu-nav flex gap-3 ">{li}</ul>
         </div>
         {user ? (
           <div className="flex items-center gap-2">
@@ -63,8 +73,8 @@ const Navbar = () => {
                 <div tabIndex={0} role="button" className="btn shadow-none bg-transparent px-0 border-none">
                   <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full "></img>
                 </div>
-                <ul className="dropdown-content bg-[#00000052] backdrop-blur-2xl  rounded-box z-1 p-3 shadow-sm w-[200px] whitespace-normal *:text-base-300">
-                  <li className="text-start">
+                <ul className="dropdown-content bg-[#00000052] backdrop-blur-2xl  rounded-box z-1 p-3 shadow-sm w-[200px] whitespace-normal *:text-white">
+                  <li className="bg-linear-to-tr from-[#00000035] to-[#ffffffbe] text-2xl py-2 px-3 rounded">
                     <Link to="/dashboard"> Dashboard</Link>
                   </li>
                   <hr className="border-gray-400 my-3" />
