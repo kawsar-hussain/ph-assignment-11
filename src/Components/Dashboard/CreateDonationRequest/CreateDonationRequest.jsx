@@ -48,6 +48,7 @@ const CreateDonationRequest = () => {
       donationDate: form.donationDate.value,
       donationTime: form.donationTime.value,
       message: form.requestMessage.value,
+      status: "pending",
     };
 
     console.log(formData);
@@ -64,8 +65,8 @@ const CreateDonationRequest = () => {
 
   return (
     <div className=" flex justify-center items-center ">
-      <div className="max-w-4xl mx-auto p-6  shadow-xl rounded-box bg-[#00000034] backdrop-blur-sm ">
-        <h2 className="text-2xl font-bold text-center mb-7 text-white">Request For Blood</h2>
+      <div className="max-w-4xl mx-auto p-6  shadow-xl rounded-box bg-black/20 backdrop-blur-sm ">
+        <h2 className="text-2xl font-bold text-center mb-7 text-white">Post Request For Blood</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Requester Name */}
@@ -187,7 +188,7 @@ const CreateDonationRequest = () => {
 
           {/* Submit Button */}
           <div className="mt-6">
-            <button type="submit" className="btn primary-bg border-none shadow-none text-white w-full">
+            <button type="submit" className="btn  border-none shadow-none bg-[#ffc2c2] w-full">
               Submit Blood Request
             </button>
           </div>

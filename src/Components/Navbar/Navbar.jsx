@@ -74,7 +74,7 @@ const Navbar = () => {
                   <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full "></img>
                 </div>
                 <ul className="dropdown-content bg-[#00000052] backdrop-blur-2xl  rounded-box z-1 p-3 shadow-sm w-[200px] whitespace-normal *:text-white">
-                  <li className="bg-linear-to-tr from-[#00000035] to-[#ffffffbe] text-2xl py-2 px-3 rounded">
+                  <li className="bg-linear-to-tr from-[#000000] to-[#ffffffbe] text-2xl py-2 px-3 rounded">
                     <Link to="/dashboard"> Dashboard</Link>
                   </li>
                   <hr className="border-gray-400 my-3" />

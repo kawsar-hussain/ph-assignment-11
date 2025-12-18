@@ -50,7 +50,7 @@ const Aside = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-          <div className="menu lg:bg-[#0000005f] bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm   min-h-screen w-80 p-4">
+          <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm   min-h-screen w-80 p-4">
             {/* Sidebar content here */}
             <div className="mt-4 ">
               <div className="w-full aspect-square ">

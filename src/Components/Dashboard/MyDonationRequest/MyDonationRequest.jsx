@@ -13,12 +13,11 @@ const MyDonationRequest = () => {
   }, []);
   return (
     <div>
-      <h1>hi</h1>
       <div className="overflow-x-auto">
-        <table className="table text-white bg-[#ffffff18] backdrop-blur-sm">
+        <table className="table text-white bg-black/15 backdrop-blur-sm">
           {/* head */}
           <thead>
-            <tr className="text-white">
+            <tr className="text-white bg-black/10 rounded-t">
               <th>Recipient</th>
               <th>Location</th>
               <th>Date</th>

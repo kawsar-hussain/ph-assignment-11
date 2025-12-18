@@ -41,10 +41,10 @@ const Users = () => {
       </div>
 
       <div className="lg:overflow-visible overflow-x-auto">
-        <table className="table text-white bg-[#ffffff18] backdrop-blur-sm">
+        <table className="table text-white bg-black/15 backdrop-blur-sm">
           {/* head */}
           <thead>
-            <tr className="text-white">
+            <tr className="text-white bg-black/10 rounded-t">
               <th>Name</th>
               <th>Email</th>
               <th>Status</th>
@@ -54,7 +54,7 @@ const Users = () => {
           <tbody>
             {/* row 1 */}
             {filteredUsers.map((user) => (
-              <tr key={user._id}>
+              <tr key={user._id} className="hover:bg-[#ffffff1d]">
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
