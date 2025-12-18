@@ -16,6 +16,7 @@ import Profile from "../Components/Dashboard/Profile/Profile";
 import DonationRequests from "../Pages/DonationRequests/DonationRequestsPage";
 import Funding from "../Pages/Funding/Funding";
 import DonationRequestDetails from "../Components/DonationRequests/DonationRequestDetails";
+import SearchDonor from "../Components/Banner/SearchDonor";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,6 @@ const router = createBrowserRouter([
         index: true,
         element: <Home></Home>,
       },
-
       {
         path: "login",
         element: (
@@ -49,12 +49,20 @@ const router = createBrowserRouter([
       },
       {
         path: "donation-requests/:id",
-        element: <DonationRequestDetails></DonationRequestDetails>,
+        element: (
+          <PrivateRoute>
+            <DonationRequestDetails></DonationRequestDetails>
+          </PrivateRoute>
+        ),
       },
 
       {
         path: "funding",
         element: <Funding></Funding>,
+      },
+      {
+        path: "search-donor",
+        element: <SearchDonor></SearchDonor>,
       },
     ],
   },
@@ -62,6 +70,7 @@ const router = createBrowserRouter([
     path: "*",
     element: <Error404></Error404>,
   },
+
   {
     path: "dashboard",
     element: (

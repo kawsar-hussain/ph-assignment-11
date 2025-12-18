@@ -14,17 +14,18 @@ const RecentDonation = () => {
       setRequests(res.data);
     });
   }, []);
+
   return (
-    <div className=" ">
-      <div className="flex justify-between items-center  text-base-300  font-bold mt-10 p-3 bg-black/35 backdrop-blur-sm rounded-t">
+    <div className="mt-10">
+      <div className="flex justify-between items-center  text-base-300  font-bold p-3 bg-black/35 backdrop-blur-sm rounded-t">
         <h3 className="text-2xl ">Your Recent 3 Requests</h3>
         <Link to="/dashboard/my-donation-requests" className="flex items-center gap-1.5 mr-5">
           See All Requests <FaArrowRight />
         </Link>
       </div>
       <div>
-        <div className="overflow-x-auto text-white bg-black/15 backdrop-blur-sm">
-          <table className="table ">
+        <div className="overflow-x-auto text-white bg-black/15 backdrop-blur-sm rounded-b">
+          <table className="table">
             {/* head */}
             <thead>
               <tr className="text-white bg-black/10">
@@ -42,6 +43,8 @@ const RecentDonation = () => {
             <tbody>
               {requests
                 .filter((item) => item.requesterEmail === user.email)
+                .slice(0, 3)
+                .reverse()
                 .map((request) => (
                   <tr key={request._id} className="hover:bg-[#ffffff1d]">
                     {/* Recipient Name */}

@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [dbUser, setDbuser] = useState("");
 
-  // console.log(user);
+  console.log(user);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -47,8 +47,6 @@ const AuthProvider = ({ children }) => {
     axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
       // console.log(res.data.role);
       setDbuser(res.data);
-
-      console.log(res.data);
     });
   }, [user]);
 
@@ -61,10 +59,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     updateUser,
     setUser,
-    role: dbUser.role,
-    district: dbUser.district,
-    upazila: dbUser.upazila,
-    status: dbUser.status,
+    dbUser,
   };
   return <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>;
 };

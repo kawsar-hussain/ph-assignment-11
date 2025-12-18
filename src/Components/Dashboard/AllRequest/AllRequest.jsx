@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const AllRequest = () => {
-  const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
+  const { dbUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get("http://localhost:3000/create-donation-request").then((res) => {
@@ -26,7 +26,7 @@ const AllRequest = () => {
               <th>Blood</th>
               <th>Status</th>
               <th>Donor</th>
-              <th>Actions</th>
+              {dbUser.role === "admin" && <th>Actions</th>}
             </tr>
           </thead>
 
@@ -71,16 +71,19 @@ const AllRequest = () => {
                 </td>
 
                 {/* Actions */}
-                <td className="flex gap-1 flex-wrap">
-                  {/* View */}
-                  <button className="btn btn-xs btn-info  border-none shadow-none">View</button>
 
-                  {/* Edit */}
-                  <button className="btn btn-xs btn-warning  border-none shadow-none">Edit</button>
+                {dbUser.role === "admin" && (
+                  <td className="flex gap-1 flex-wrap">
+                    {/* View */}
+                    <button className="btn btn-xs btn-info  border-none shadow-none">View</button>
 
-                  {/* Delete */}
-                  <button className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none">Delete</button>
-                </td>
+                    {/* Edit */}
+                    <button className="btn btn-xs btn-warning  border-none shadow-none">Edit</button>
+
+                    {/* Delete */}
+                    <button className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none">Delete</button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

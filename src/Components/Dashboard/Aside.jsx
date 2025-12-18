@@ -66,32 +66,48 @@ const Aside = () => {
                 <MdVerified className="text-xl text-[#1b76ff]" /> {dbUser.role}
               </p>
             </div>
-            <div className="">
-              <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold *:hover:bg-[#0000003b] aside-div">
-                <NavLink to="/dashboard" className="flex gap-4 items-center" end>
-                  <MdOutlineDashboardCustomize className="text-xl" /> Dashboard
-                </NavLink>
+
+            {/* dashboard link */}
+            <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold *:hover:bg-[#0000003b] aside-div">
+              <NavLink to="/dashboard" className="flex gap-4 items-center" end>
+                <MdOutlineDashboardCustomize className="text-xl" /> Dashboard
+              </NavLink>
+
+              {/* admin link */}
+              {dbUser.role === "admin" && (
                 <NavLink to="/dashboard/all-users" className="flex gap-4 items-center">
                   <FaUsers className="text-xl" /> Users
                 </NavLink>
-                <NavLink to="/dashboard/create-donation-request" className="flex gap-4 items-center">
-                  {" "}
-                  <IoCreateOutline className="text-xl" />
-                  Create Donation Request
-                </NavLink>
-                <NavLink to="/dashboard/my-donation-requests" className="flex gap-4 items-center">
-                  {" "}
-                  <IoIosGitPullRequest className="text-xl" /> My Donation Request
-                </NavLink>
+              )}
+
+              {/* admin and volunteer link */}
+              {(dbUser.role === "admin" || dbUser.role === "volunteer") && (
                 <NavLink to="/dashboard/all-blood-donation-request" className="flex gap-4 items-center">
                   {" "}
                   <VscRequestChanges className="text-xl" /> All Donation Request
                 </NavLink>
-                <NavLink to="/dashboard/profile" className="flex gap-4 items-center">
-                  <FaRegUserCircle className="text-xl" /> Profile
-                </NavLink>
-              </div>
+              )}
+
+              {/* donor links */}
+              {dbUser.role === "donor" && (
+                <>
+                  <NavLink to="/dashboard/create-donation-request" className="flex gap-4 items-center">
+                    {" "}
+                    <IoCreateOutline className="text-xl" />
+                    Create Donation Request
+                  </NavLink>
+                  <NavLink to="/dashboard/my-donation-requests" className="flex gap-4 items-center">
+                    {" "}
+                    <IoIosGitPullRequest className="text-xl" /> My Donation Request
+                  </NavLink>
+                </>
+              )}
+
+              <NavLink to="/dashboard/profile" className="flex gap-4 items-center">
+                <FaRegUserCircle className="text-xl" /> Profile
+              </NavLink>
             </div>
+
             {/* home and logout */}
             <div className="absolute bottom-6 text-white">
               <Link to="/" className="flex text-md gap-2 mb-3">

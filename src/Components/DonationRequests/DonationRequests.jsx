@@ -6,7 +6,6 @@ const DonationRequests = () => {
 
   useEffect(() => {
     axios.get("http://localhost:3000/create-donation-request").then((res) => {
-      console.log(res.data);
       setRequests(res.data);
     });
   }, []);
@@ -15,9 +14,9 @@ const DonationRequests = () => {
       <h2 className="text-4xl text-base-300 font-bold text-center mb-10">Donation Requests</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {requests.map((request) => (
-          <div key={request._id} className="bg-[#ffffff18] backdrop-blur-sm p-5 rounded-xl shadow-md text-white flex flex-col justify-between">
+          <div key={request._id} className="bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md text-white flex flex-col justify-between">
             <h3 className="text-2xl font-semibold mb-3">
-              Blood Needed: <span className="bg-[#0089fa] px-3 py-1 rounded ">{request.bloodGroup}</span>
+              Blood Needed: <span className="bg-white/30 px-3 py-1 rounded ">{request.bloodGroup}</span>
             </h3>
 
             {/* Recipient Name */}
@@ -44,7 +43,10 @@ const DonationRequests = () => {
                 </p>
               </div>
               <div className="self-end">
-                <Link to={`/donation-requests/${request._id}`} className="btn btn-sm bg-[#ff8903] border-none shadow-none text-white hover:scale-105 duration-75">
+                <Link
+                  to={`/donation-requests/${request._id}`}
+                  className="btn btn-sm bg-linear-to-tr from-[#dc4900] to-[#ffa41c] border-none shadow-none text-white transition-transform hover:scale-105 hover:duration-200"
+                >
                   View Details
                 </Link>
               </div>

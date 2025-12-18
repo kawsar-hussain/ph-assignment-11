@@ -58,14 +58,14 @@ const Login = () => {
               </button>
             </div>
             {error && <p className="text-red-500 text-xs md:text-sm">{error}</p>}
-            <button type="submit" className="btn primary-bg mt-4 text-white border-none shadow-none btn-sm md:btn-md">
+            <button type="submit" className="btn mt-4 bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none shadow-none btn-sm md:btn-md">
               Login
             </button>
           </fieldset>
           <p className="text-center text-gray-100 mt-2 text-sm md:text-base">
             Don't have an account? {""}
-            <Link to="/register" className="underline  font-medium">
-              Register
+            <Link to="/register" className="underline  font-medium text-[#ff8903]">
+              Sign Up
             </Link>
           </p>
         </form>

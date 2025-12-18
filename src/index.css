@@ -10,8 +10,8 @@ body {
 }
 
 nav .active {
-  background: rgba(0, 0, 0, 0.251);
-  color: white;
+  color: #ffa33b;
+  font-weight: bold;
 }
 
 .aside-div .active {

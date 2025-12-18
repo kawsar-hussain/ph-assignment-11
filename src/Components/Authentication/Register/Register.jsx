@@ -187,14 +187,14 @@ const Register = () => {
             </div>
             <p className="text-red-500 text-xs md:text-sm">{error}</p>
 
-            <button type="submit" className="btn mt-4 bg-[#ca2500] text-white border-none shadow-none btn-sm md:btn-md">
-              Register
+            <button type="submit" className="btn mt-4 bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none shadow-none btn-sm md:btn-md">
+              Sign Up
             </button>
           </fieldset>
 
           <p className="text-center mt-2 text-sm text-gray-100 md:text-base">
             Already have an account?{" "}
-            <Link to="/login" className="underline font-medium">
+            <Link to="/login" className="underline font-medium text-[#ff8903]">
               Login
             </Link>
           </p>

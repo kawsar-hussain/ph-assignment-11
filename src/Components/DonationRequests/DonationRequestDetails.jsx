@@ -32,7 +32,7 @@ const DonationRequestDetails = () => {
             </p>
           </div>
 
-          <div className="bg-white/15 rounded-lg p-3 text-sm">{request.message}</div>
+          {request.message != "" && <div className="bg-white/15 rounded-lg p-3 text-sm">{request.message}</div>}
 
           <div className="bg-white/15 rounded-lg p-3">
             <div className="grid grid-cols-2 gap-3 text-sm">

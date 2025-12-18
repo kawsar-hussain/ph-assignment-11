@@ -16,8 +16,6 @@ const Users = () => {
     });
   }, []);
 
-  console.log(users);
-
   return (
     <div>
       <div className="flex justify-end mb-8">

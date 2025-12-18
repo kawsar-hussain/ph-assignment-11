@@ -7,7 +7,7 @@ const Modal = () => {
   return (
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <button className="btn w-full  shadow-none" onClick={() => document.getElementById("my_modal_1").showModal()}>
+      <button className="btn w-full bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white border-none shadow-none" onClick={() => document.getElementById("my_modal_1").showModal()}>
         Donate Now
       </button>
       <dialog id="my_modal_1" className="modal ">
