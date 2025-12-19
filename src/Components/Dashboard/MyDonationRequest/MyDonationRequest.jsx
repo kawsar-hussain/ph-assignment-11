@@ -30,10 +30,10 @@ const MyDonationRequest = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table text-white bg-black/15 backdrop-blur-sm">
+        <table className="table text-white bg-black/15 backdrop-blur-sm rounded-md">
           {/* head */}
           <thead>
-            <tr className="text-white bg-black/10 rounded-t">
+            <tr className="text-white bg-black/10 ">
               <th>Recipient</th>
               <th>Location</th>
               <th>Date</th>
@@ -67,7 +67,7 @@ const MyDonationRequest = () => {
 
                 {/* Donation Status */}
                 <td>
-                  {request.status === "pending" && <button className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] shadow-none border-none w-20">Pending</button>}
+                  {request.status === "pending" && <button className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white shadow-none border-none w-20">Pending</button>}
 
                   {request.status === "in progress" && (
                     <div className="flex gap-1">
@@ -104,7 +104,9 @@ const MyDonationRequest = () => {
                   </Link>
 
                   {/* Edit */}
-                  <button className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] border-none shadow-none">Edit</button>
+                  <Link to={`/dashboard/update/request/${request._id}`} className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white border-none shadow-none">
+                    Edit
+                  </Link>
 
                   {/* Delete */}
                   <button className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none">Delete</button>
