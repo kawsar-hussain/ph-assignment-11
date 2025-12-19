@@ -50,7 +50,7 @@ const SearchDonor = () => {
   };
 
   return (
-    <div className="lg:px-20 py-10 px-5">
+    <div className="lg:px-20 py-10 px-5 lg:h-[92vh] h-[80vh]">
       <div className="bg-black/15 backdrop-blur-md py-15 rounded-md">
         <h3 className="text-3xl font-bold text-white text-center">Search Blood Requests Here</h3>
         {/* filters */}

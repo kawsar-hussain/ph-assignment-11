@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useParams } from "react-router";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const UpdateRequest = () => {
   const { user } = useContext(AuthContext);
@@ -85,6 +87,12 @@ const UpdateRequest = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    Swal.fire({
+      title: "Drag me!",
+      icon: "success",
+      draggable: true,
+    });
   };
   return (
     <div className="flex justify-center items-center ">

@@ -4,6 +4,7 @@ import Home from "./Home";
 import Navbar from "../Components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../Provider/AuthProvider";
+import Footer from "../Components/Footer/Footer";
 
 const Root = () => {
   return (
@@ -12,6 +13,7 @@ const Root = () => {
       <Outlet>
         <Home></Home>
       </Outlet>
+      <Footer></Footer>
       <ToastContainer position="top-center" autoClose={2000}></ToastContainer>
     </div>
   );

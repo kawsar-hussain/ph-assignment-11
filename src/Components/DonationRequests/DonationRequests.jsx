@@ -10,7 +10,7 @@ const DonationRequests = () => {
     });
   }, []);
   return (
-    <div className="lg:px-20 lg:py-10 px-5">
+    <div className="lg:px-20 py-10 px-5">
       <h2 className="text-4xl text-base-300 font-bold text-center mb-10">Donation Requests</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {requests.map((request) => (
