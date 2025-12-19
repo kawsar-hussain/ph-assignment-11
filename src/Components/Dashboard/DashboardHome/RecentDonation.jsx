@@ -9,11 +9,11 @@ const RecentDonation = () => {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/create-donation-request").then((res) => {
+    axios.get(`http://localhost:3000/my-requests?email=${user.email}`).then((res) => {
       console.log(res.data);
       setRequests(res.data);
     });
-  }, []);
+  }, [user.email]);
 
   return (
     <div className="mt-10">
@@ -42,7 +42,6 @@ const RecentDonation = () => {
 
             <tbody>
               {requests
-                .filter((item) => item.requesterEmail === user.email)
                 .slice(0, 3)
                 .reverse()
                 .map((request) => (
