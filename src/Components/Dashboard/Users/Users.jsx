@@ -9,12 +9,23 @@ const Users = () => {
 
   const filteredUsers = statusFilter ? users.filter((user) => user.status === statusFilter) : users;
 
-  useEffect(() => {
+  const fetchUser = () => {
     axios.get("http://localhost:3000/users").then((res) => {
       // console.log(res.data.role);
       setUsers(res.data);
     });
+  };
+
+  useEffect(() => {
+    fetchUser();
   }, []);
+
+  const handleStatusChange = (email, status) => {
+    axios.patch(`http://localhost:3000/update/user-status?email=${email}&status=${status}`).then((res) => {
+      console.log(res.data);
+      fetchUser();
+    });
+  };
 
   return (
     <div>
@@ -109,13 +120,13 @@ const Users = () => {
                         ""
                       )}
 
-                      {user.status === "active" ? (
+                      {user?.status === "active" ? (
                         <li>
-                          <button>Block</button>
+                          <button onClick={() => handleStatusChange(user?.email, "blocked")}>Block</button>
                         </li>
                       ) : (
                         <li>
-                          <button>Unblock</button>
+                          <button onClick={() => handleStatusChange(user?.email, "active")}>Unblock</button>
                         </li>
                       )}
                     </ul>
