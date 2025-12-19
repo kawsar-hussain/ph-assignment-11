@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import Req from "./req";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 const MyDonationRequest = () => {
   const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalCallback, setModalCallback] = useState(null);
 
   const fetchUser = () => {
     axios.get(`http://localhost:3000/my-requests?email=${user.email}`).then((res) => {
@@ -27,10 +29,25 @@ const MyDonationRequest = () => {
     });
   };
 
+  // delete request function
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/delete/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        const filterData = requests.filter((request) => request._id !== id);
+        setRequests(filterData);
+        toast.success("Item deleted successfully!");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div>
-      <div className="overflow-x-auto">
-        <table className="table text-white bg-black/15 backdrop-blur-sm rounded-md">
+      <div className="">
+        <table className="table overflow-visible text-white bg-black/15 backdrop-blur-sm rounded-md">
           {/* head */}
           <thead>
             <tr className="text-white bg-black/10 ">
@@ -109,13 +126,44 @@ const MyDonationRequest = () => {
                   </Link>
 
                   {/* Delete */}
-                  <button className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none">Delete</button>
+                  <button
+                    onClick={() => {
+                      setModalCallback(() => () => handleDelete(request._id));
+                      setIsModalOpen(true);
+                    }}
+                    className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {/* modal */}
+      {isModalOpen && (
+        <div className="modal modal-open bg-black/30">
+          <div className="modal-box bg-base-300">
+            <h3 className="font-bold text-lg text-black">Confirm Delete</h3>
+            <p className="py-4 text-black">Are you sure you want to delete this item?</p>
+            <div className="modal-action">
+              <button className="btn bg-gray-800 text-white" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+              <button
+                className="btn bg-[#ff3700] shadow-none border-none text-white"
+                onClick={() => {
+                  modalCallback?.(); // run stored callback
+                  setIsModalOpen(false); // close modal
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
