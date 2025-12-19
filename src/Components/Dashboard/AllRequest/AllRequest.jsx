@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link } from "react-router";
 
 const AllRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -75,7 +76,9 @@ const AllRequest = () => {
                 {dbUser.role === "admin" && (
                   <td className="flex gap-1 flex-wrap">
                     {/* View */}
-                    <button className="btn btn-xs btn-info  border-none shadow-none">View</button>
+                    <Link to={`/donation-requests/${request._id}`} className="btn btn-xs btn-info  border-none shadow-none">
+                      View
+                    </Link>
 
                     {/* Edit */}
                     <button className="btn btn-xs btn-warning  border-none shadow-none">Edit</button>

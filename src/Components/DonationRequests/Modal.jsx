@@ -1,8 +1,16 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
-const Modal = () => {
+const Modal = ({ request }) => {
   const { user } = useContext(AuthContext);
+
+  // update donation status function
+  const handleStatusChange = (id, status) => {
+    axios.patch(`http://localhost:3000/update/donation-status/${id}`, { status }).then((res) => {
+      console.log(res.data);
+    });
+  };
 
   return (
     <div>
@@ -15,7 +23,9 @@ const Modal = () => {
           <h3 className="font-bold text-lg">Hello, {user.displayName}!</h3>
           <p className="py-4">If you want to donate blood please click the confirm button.</p>
           <div className="flex items-end justify-end gap-1">
-            <button className="btn bg-[#0073ff] text-white">Confirm</button>
+            <button onClick={() => handleStatusChange(request?._id, "in progress")} className="btn bg-[#0073ff] text-white">
+              Confirm
+            </button>
             <div className="modal-action">
               <form method="dialog">
                 <button className="btn bg-[#ec3b00] text-white">Close</button>

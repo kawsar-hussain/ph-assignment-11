@@ -15,7 +15,6 @@ const Req = () => {
       axios
         .get(`http://localhost:3000/my-requests?email=${user.email}`)
         .then((response) => {
-          // Axios puts the data inside a .data property
           setRequests(response.data);
           setLoading(false);
         })

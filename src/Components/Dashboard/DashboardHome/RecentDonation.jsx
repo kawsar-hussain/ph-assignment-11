@@ -86,7 +86,9 @@ const RecentDonation = () => {
                     {/* Actions */}
                     <td className="flex gap-1 flex-wrap">
                       {/* View */}
-                      <button className="btn btn-xs btn-info  border-none shadow-none">View</button>
+                      <Link to={`/donation-requests/${request._id}`} className="btn btn-xs btn-info  border-none shadow-none">
+                        View
+                      </Link>
 
                       {/* Edit */}
                       <button className="btn btn-xs btn-warning  border-none shadow-none">Edit</button>

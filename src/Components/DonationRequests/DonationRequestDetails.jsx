@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Modal from "./Modal";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const DonationRequestDetails = () => {
   const { id } = useParams();
   const [request, setRequest] = useState("");
+  const { user } = useContext(AuthContext);
   console.log(request);
 
   useEffect(() => {
@@ -67,9 +69,13 @@ const DonationRequestDetails = () => {
               <p className="text-sm opacity-70 cursor-pointer hover:underline">{request.requesterEmail}</p>
             </div>
           </div>
-          <div className="mt-2">
-            <Modal></Modal>
-          </div>
+          {user.email === request.requesterEmail ? (
+            <button className="btn w-full bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white border-none shadow-none">This Request is submitted by you</button>
+          ) : (
+            <div className="mt-2">
+              <Modal request={request}></Modal>
+            </div>
+          )}
         </div>
       </div>
     </div>
