@@ -76,7 +76,7 @@ const Navbar = () => {
               </div>
               <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className="btn shadow-none bg-transparent px-0 border-none">
-                  <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full "></img>
+                  <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full border border-[#ffa647]"></img>
                 </div>
 
                 <ul className="dropdown-content  bg-black/60  backdrop-blur-2xl space-y-3 rounded-box z-50 p-3 shadow-sm w-[200px] whitespace-normal *:text-white">

@@ -27,6 +27,13 @@ const Users = () => {
     });
   };
 
+  const handleUserRoleChange = (email, role) => {
+    axios.patch(`http://localhost:3000/update/user-role?email=${email}&role=${role}`).then((res) => {
+      console.log(res.data);
+      fetchUser();
+    });
+  };
+
   return (
     <div>
       <div className="flex justify-end mb-8">
@@ -83,53 +90,60 @@ const Users = () => {
                 </td>
                 <th>
                   <div className="dropdown dropdown-end ">
-                    <div tabIndex={0} role="button" className="btn border-none btn-ghost hover:bg-[#ffffff3a] hover:shadow-none hover:h-8 h-8">
-                      <HiDotsHorizontal />
-                    </div>
-                    <ul tabIndex="-1" className="dropdown-content menu font-medium bg-[#ffffff] text-gray-700 rounded-box w-52 p-2 shadow-sm z-10 ">
-                      {user.role === "admin" ? (
-                        <>
-                          <li>
-                            <button>Make Volunteer</button>
-                          </li>
-                          <li>
-                            <button>Make Donor</button>
-                          </li>
-                        </>
-                      ) : user.role === "donor" ? (
-                        <>
-                          {" "}
-                          <li>
-                            <button>Make Admin</button>
-                          </li>
-                          <li>
-                            <button>Make Volunteer</button>
-                          </li>
-                        </>
-                      ) : user.role === "volunteer" ? (
-                        <>
-                          {" "}
-                          <li>
-                            <button>Make Admin</button>
-                          </li>
-                          <li>
-                            <button>Make Donor</button>
-                          </li>
-                        </>
-                      ) : (
-                        ""
-                      )}
+                    {user.email === "admin@donatex.com" ? (
+                      <button className="btn btn-sm bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none h-6 shadow-none">Controller</button>
+                    ) : (
+                      <div tabIndex={0} role="button" className="btn border-none btn-ghost hover:bg-[#ffffff3a] hover:shadow-none hover:h-8 h-8">
+                        <HiDotsHorizontal />
+                      </div>
+                    )}
 
-                      {user?.status === "active" ? (
-                        <li>
-                          <button onClick={() => handleStatusChange(user?.email, "blocked")}>Block</button>
-                        </li>
-                      ) : (
-                        <li>
-                          <button onClick={() => handleStatusChange(user?.email, "active")}>Unblock</button>
-                        </li>
-                      )}
-                    </ul>
+                    {user.email != "admin@donatex.com" && (
+                      <ul tabIndex="-1" className="dropdown-content menu font-medium bg-[#ffffff] text-gray-700 rounded-box w-52 p-2 shadow-sm z-10 ">
+                        {user.role === "admin" ? (
+                          <>
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "volunteer")}>Make Volunteer</button>
+                            </li>
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "donor")}>Make Donor</button>
+                            </li>
+                          </>
+                        ) : user.role === "donor" ? (
+                          <>
+                            {" "}
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "admin")}>Make Admin</button>
+                            </li>
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "volunteer")}>Make Volunteer</button>
+                            </li>
+                          </>
+                        ) : user.role === "volunteer" ? (
+                          <>
+                            {" "}
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "admin")}>Make Admin</button>
+                            </li>
+                            <li>
+                              <button onClick={() => handleUserRoleChange(user?.email, "donor")}>Make Donor</button>
+                            </li>
+                          </>
+                        ) : (
+                          ""
+                        )}
+
+                        {user?.status === "active" ? (
+                          <li>
+                            <button onClick={() => handleStatusChange(user?.email, "blocked")}>Block</button>
+                          </li>
+                        ) : (
+                          <li>
+                            <button onClick={() => handleStatusChange(user?.email, "active")}>Unblock</button>
+                          </li>
+                        )}
+                      </ul>
+                    )}
                   </div>
                 </th>
               </tr>
