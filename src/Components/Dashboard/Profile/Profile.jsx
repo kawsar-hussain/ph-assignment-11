@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import Loader from "../../../Loader";
+import { FaRegEdit } from "react-icons/fa";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -8,20 +11,24 @@ const Profile = () => {
   const [isEditable, setIsEditable] = useState(false);
   const [districts, setDistricts] = useState([]);
   const [upazilas, setUpazilas] = useState([]);
-
   const [reqDis, setReqDis] = useState("");
   const [reqUpazila, setReqUpazila] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // fetch use data
-  useEffect(() => {
+  // fetch user data
+  const fetchData = () => {
     axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
       setLoggedUser(res.data);
       setBloodGroup(res.data.bloodGroup);
       setReqDis(res.data.district);
       setReqUpazila(res.data.upazila);
     });
-  }, [user.email]);
+  };
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // fetch districts
   useEffect(() => {
@@ -49,6 +56,7 @@ const Profile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const form = e.target;
 
     const name = form.name.value;
@@ -90,33 +98,65 @@ const Profile = () => {
         console.log(err);
       });
 
+    // sweet alert
+    Swal.fire({
+      title: "Profile Updated Successfully!",
+      icon: "success",
+      draggable: true,
+    });
     setIsEditable(false);
+    setIsSubmitting(false);
+    fetchData();
   };
 
   return (
     <div className="lg:h-[92vh] h-auto flex items-center justify-center px-4 md:px-0 py-10">
-      <div className="card w-full max-w-2xl bg-black/15 backdrop-blur-sm shadow-xl border border-white/10">
+      {isSubmitting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+          <div className="flex flex-col items-center">
+            <span className="loading loading-spinner loading-lg text-[#dc4900]"></span>
+            <p className="text-white mt-4 font-bold">Updating Profile...</p>
+          </div>
+        </div>
+      )}
+
+      <div className="card w-full max-w-3xl bg-black/15 backdrop-blur-sm shadow-xl border border-white/20">
         {/* Profile Header */}
-        <div className="flex justify-between items-center p-6 md:p-8 border-b border-white/5">
+        <div className="flex justify-between items-center p-6 md:p-8 border-b border-white/15">
           <div>
             <h2 className="text-xl md:text-2xl font-bold text-white">User Profile</h2>
-            <p className="text-gray-400 text-sm">Manage your personal information</p>
+            <p className="text-base-300 text-sm">Manage your personal information</p>
           </div>
           <button onClick={() => setIsEditable(!isEditable)} className="btn btn-sm bg-linear-to-tr from-[#dc4900] to-[#ffa41c] border-none text-white shadow-lg">
-            {isEditable ? "Cancel" : "Edit Profile"}
+            {isEditable ? (
+              "Cancel"
+            ) : (
+              <span className="flex gap-1 items-center">
+                <FaRegEdit className="text-lg" /> Edit Profile
+              </span>
+            )}
           </button>
         </div>
 
-        <form onSubmit={handleUpdate} className="card-body p-6 md:p-8">
-          <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+        <form onSubmit={handleUpdate} className="p-6">
+          <div className="flex flex-col gap-8 items-center ">
             {/* Avatar Section */}
-            <div className="flex flex-col items-center gap-4">
+            <div className="border-b flex justify-center gap-7 border-white/10 w-full pb-6">
               <div className="avatar">
-                <div className="w-24 md:w-32 rounded-full ring-2 ring-[#ffa41c] ring-offset-base-100 ring-offset-2">
+                <div className="w-24 md:w-40 rounded-full ring-2 ring-[#ffa41c] ring-offset-base-100 ring-offset-2">
                   <img src={loggedUser.photoURL} alt="User Avatar" />
                 </div>
               </div>
-              {isEditable && <input type="file" name="photo" className="file-input " />}
+              <div className="">
+                <p className="text-xl font-bold text-white mt-4">{loggedUser.name}</p>
+                {/* Status */}
+                <div className="form-control">
+                  <div className="flex gap-1 items-center h-10 md:h-12">
+                    <span className="btn btn-xs bg-[#f59700] border-none shadow-none text-white">{user?.role || "donor"}</span>
+                    <span className="btn btn-xs bg-[#117cff] border-none shadow-none text-white text-xs">Active</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Form Fields Grid */}
@@ -124,44 +164,48 @@ const Profile = () => {
               {/* Name */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-gray-300">Name</span>
+                  <span className="label-text text-base-300">Name</span>
                 </label>
                 <input
                   type="text"
                   name="name"
                   defaultValue={loggedUser?.name}
                   readOnly={!isEditable}
-                  className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-gray-400" : "bg-white/10 text-white border-[#ffa41c]"}`}
+                  className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-base-300 w-full" : "bg-white/10 text-white w-full"}`}
                 />
               </div>
 
-              {/* Email - Strictly Read Only */}
+              {isEditable && (
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-base-300">Choose Photo</span>
+                  </label>
+                  <input type="file" name="photo" className="file-input w-full" />
+                </div>
+              )}
+
+              {/* email */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-gray-300">Email (Fixed)</span>
+                  <span className="label-text text-base-300">Email</span>
                 </label>
-                <input type="email" defaultValue={loggedUser?.email} readOnly={true} className="input input-sm md:input-md bg-transparent border-white/10 text-gray-500 cursor-not-allowed" />
+                <input type="email" defaultValue={loggedUser?.email} readOnly={true} className="w-full input input-sm md:input-md bg-transparent border-white/10 text-base-300 cursor-not-allowed" />
               </div>
 
               {/* Blood Group */}
               {!isEditable ? (
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-gray-300">Blood Group</span>
+                    <span className="label-text text-base-300">Blood Group</span>
                   </label>
-                  <input
-                    type="text"
-                    defaultValue={loggedUser?.bloodGroup}
-                    readOnly={!isEditable}
-                    className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-gray-400" : "bg-white/10 text-white border-[#ffa41c]"}`}
-                  />
+                  <input type="text" defaultValue={loggedUser?.bloodGroup} readOnly={!isEditable} className="input input-sm md:input-md bg-transparent border-white/10 text-base-300 w-full" />
                 </div>
               ) : (
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Blood Group</span>
                   </label>
-                  <select name="bloodGroup" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} className="select select-bordered w-full">
+                  <select name="bloodGroup" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} className="select w-full">
                     <option value="">Select Blood Group</option>
                     <option>A+</option>
                     <option>A-</option>
@@ -179,14 +223,9 @@ const Profile = () => {
               {!isEditable ? (
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-gray-300">District</span>
+                    <span className="label-text text-base-300">District</span>
                   </label>
-                  <input
-                    type="text"
-                    defaultValue={loggedUser?.district}
-                    readOnly={!isEditable}
-                    className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-gray-400" : "bg-white/10 text-white border-[#ffa41c]"}`}
-                  />
+                  <input type="text" defaultValue={loggedUser?.district} readOnly={!isEditable} className=" input input-sm md:input-md bg-transparent border-white/10 text-base-300 w-full" />
                 </div>
               ) : (
                 <div className="form-control">
@@ -210,14 +249,9 @@ const Profile = () => {
               {!isEditable ? (
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-gray-300">Upazila</span>
+                    <span className="label-text text-base-300">Upazila</span>
                   </label>
-                  <input
-                    type="text"
-                    defaultValue={loggedUser?.upazila}
-                    readOnly={!isEditable}
-                    className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-gray-400" : "bg-white/10 text-white border-[#ffa41c]"}`}
-                  />
+                  <input type="text" defaultValue={loggedUser?.upazila} readOnly={!isEditable} className="input input-sm md:input-md bg-transparent border-white/10 text-base-300 w-full" />
                 </div>
               ) : (
                 <div className="form-control">
@@ -236,24 +270,13 @@ const Profile = () => {
                   </select>
                 </div>
               )}
-
-              {/* Status */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-gray-300">Role & Status</span>
-                </label>
-                <div className="flex gap-2 items-center h-10 md:h-12">
-                  <span className="badge badge-outline text-[#ffa41c] border-[#ffa41c] uppercase text-xs">{user?.role || "donor"}</span>
-                  <span className="badge badge-success text-white text-xs">Active</span>
-                </div>
-              </div>
             </div>
           </div>
 
           {/* Save Button */}
           {isEditable && (
             <div className="mt-8">
-              <button type="submit" className="btn w-full bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none">
+              <button type="submit" className="btn w-full bg-linear-to-tr shadow-none from-[#dc4900] to-[#ffa41c] text-white border-none">
                 Save Updated Information
               </button>
             </div>

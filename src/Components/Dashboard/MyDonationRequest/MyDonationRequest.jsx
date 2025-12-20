@@ -46,122 +46,127 @@ const MyDonationRequest = () => {
 
   return (
     <div>
-      <div className="">
-        <table className="table overflow-visible text-white bg-black/15 backdrop-blur-sm rounded-md">
-          {/* head */}
-          <thead>
-            <tr className="text-white bg-black/10 ">
-              <th>Recipient</th>
-              <th>Location</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Blood</th>
-              <th>Status</th>
-              <th>Donor</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      {requests.length < 1 ? (
+        <p className="text-white bg-black/15 backdrop-blur-md text-center rounded py-15">You haven't submitted any requests yet.</p>
+      ) : (
+        <div className="">
+          <table className="table overflow-visible text-white bg-black/15 backdrop-blur-sm rounded-md">
+            {/* head */}
+            <thead>
+              <tr className="text-white bg-black/10 ">
+                <th>Recipient</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Blood</th>
+                <th>Status</th>
+                <th>Donor</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {requests.map((request) => (
-              <tr key={request._id} className="hover:bg-[#ffffff1d]">
-                {/* Recipient Name */}
-                <td>{request.recipientName}</td>
+            <tbody>
+              {[...requests].reverse().map((request) => (
+                <tr key={request._id} className="hover:bg-[#ffffff1d]">
+                  {/* Recipient Name */}
+                  <td>{request.recipientName}</td>
 
-                {/* Location */}
-                <td>
-                  {request.upazila}, {request.district}
-                </td>
+                  {/* Location */}
+                  <td>
+                    {request.upazila}, {request.district}
+                  </td>
 
-                {/* Donation Date */}
-                <td>{request.donationDate}</td>
+                  {/* Donation Date */}
+                  <td>{request.donationDate}</td>
 
-                {/* Donation Time */}
-                <td>{request.donationTime}</td>
+                  {/* Donation Time */}
+                  <td>{request.donationTime}</td>
 
-                {/* Blood Group */}
-                <td className="font-semibold">{request.bloodGroup}</td>
+                  {/* Blood Group */}
+                  <td className="font-semibold">{request.bloodGroup}</td>
 
-                {/* Donation Status */}
-                <td>
-                  {request.status === "pending" && <button className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white shadow-none border-none w-20">Pending</button>}
+                  {/* Donation Status */}
+                  <td>
+                    {request.status === "pending" && <button className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white shadow-none border-none w-20">Pending</button>}
 
-                  {request.status === "in progress" && (
-                    <div className="flex gap-1">
-                      <button onClick={() => handleStatusChange(request?._id, "completed")} className="btn btn-xs btn-info shadow-none border-none">
-                        Done
-                      </button>
-                      <button onClick={() => handleStatusChange(request?._id, "canceled")} className="btn btn-xs shadow-none bg-[#ff2c2c] text-white border-none">
-                        Cancel
-                      </button>
-                    </div>
-                  )}
+                    {request.status === "in progress" && (
+                      <div className="flex gap-1">
+                        <button onClick={() => handleStatusChange(request?._id, "completed")} className="btn btn-xs btn-info shadow-none border-none">
+                          Done
+                        </button>
+                        <button onClick={() => handleStatusChange(request?._id, "canceled")} className="btn btn-xs shadow-none bg-[#ff2c2c] text-white border-none">
+                          Cancel
+                        </button>
+                      </div>
+                    )}
 
-                  {request.status === "completed" && <button className="btn btn-xs shadow-none bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white border-none w-20">Completed</button>}
-                  {request.status === "canceled" && <button className="btn btn-xs shadow-none bg-[#ff2c2c] text-white border-none w-20">Canceled</button>}
-                </td>
+                    {request.status === "completed" && <button className="btn btn-xs shadow-none bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white border-none w-20">Completed</button>}
+                    {request.status === "canceled" && <button className="btn btn-xs shadow-none bg-[#ff2c2c] text-white border-none w-20">Canceled</button>}
+                  </td>
 
-                {/* Donor Info */}
-                <td>
-                  {request.status === "inprogress" ? (
-                    <div className="text-sm">
-                      <p>{request.donorName}</p>
-                      <p className="text-xs opacity-70">{request.donorEmail}</p>
-                    </div>
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </td>
+                  {/* Donor Info */}
+                  <td>
+                    {request.status === "inprogress" ? (
+                      <div className="text-sm">
+                        <p>{request.donorName}</p>
+                        <p className="text-xs opacity-70">{request.donorEmail}</p>
+                      </div>
+                    ) : (
+                      <span className="opacity-50">—</span>
+                    )}
+                  </td>
 
-                {/* Actions */}
-                <td className="flex gap-1 flex-wrap">
-                  {/* View */}
-                  <Link to={`/donation-requests/${request._id}`} className="btn btn-xs bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white  border-none shadow-none">
-                    View
-                  </Link>
+                  {/* Actions */}
+                  <td className="flex gap-1 flex-wrap">
+                    {/* View */}
+                    <Link to={`/donation-requests/${request._id}`} className="btn btn-xs bg-linear-to-tr from-[#ed4f00] to-[#ffa41c] text-white  border-none shadow-none">
+                      View
+                    </Link>
 
-                  {/* Edit */}
-                  <Link to={`/dashboard/update/request/${request._id}`} className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white border-none shadow-none">
-                    Edit
-                  </Link>
+                    {/* Edit */}
+                    <Link to={`/dashboard/update/request/${request._id}`} className="btn btn-xs bg-linear-to-tr from-[#0067ed] to-[#a9eaff] text-white border-none shadow-none">
+                      Edit
+                    </Link>
 
-                  {/* Delete */}
+                    {/* Delete */}
+                    <button
+                      onClick={() => {
+                        setModalCallback(() => () => handleDelete(request._id));
+                        setIsModalOpen(true);
+                      }}
+                      className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* modal */}
+          {isModalOpen && (
+            <div className="modal modal-open bg-black/30">
+              <div className="modal-box bg-base-300">
+                <h3 className="font-bold text-lg text-black">Confirm Delete</h3>
+                <p className="py-4 text-black">Are you sure you want to delete this item?</p>
+                <div className="modal-action">
+                  <button className="btn bg-gray-800 text-white" onClick={() => setIsModalOpen(false)}>
+                    Cancel
+                  </button>
                   <button
+                    className="btn bg-[#ff3700] shadow-none border-none text-white"
                     onClick={() => {
-                      setModalCallback(() => () => handleDelete(request._id));
-                      setIsModalOpen(true);
+                      modalCallback?.(); // run stored callback
+                      setIsModalOpen(false); // close modal
                     }}
-                    className="btn btn-xs bg-[#ff2c2c] text-white border-none shadow-none"
                   >
                     Delete
                   </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {/* modal */}
-      {isModalOpen && (
-        <div className="modal modal-open bg-black/30">
-          <div className="modal-box bg-base-300">
-            <h3 className="font-bold text-lg text-black">Confirm Delete</h3>
-            <p className="py-4 text-black">Are you sure you want to delete this item?</p>
-            <div className="modal-action">
-              <button className="btn bg-gray-800 text-white" onClick={() => setIsModalOpen(false)}>
-                Cancel
-              </button>
-              <button
-                className="btn bg-[#ff3700] shadow-none border-none text-white"
-                onClick={() => {
-                  modalCallback?.(); // run stored callback
-                  setIsModalOpen(false); // close modal
-                }}
-              >
-                Delete
-              </button>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>
