@@ -53,14 +53,14 @@ const Navbar = () => {
   return (
     <nav className="navbar lg:h-[8vh] h-auto bg-[#00000034] backdrop-blur-sm  shadow-sm lg:px-20 pl-1 px-5 sticky top-0 z-10 py-0">
       <div className="flex">
-        <div className="dropdown">
+        <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-base-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {" "}
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />{" "}
             </svg>
           </div>
-          <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-black/90 rounded-box z-1 mt-3 w-52 p-2 shadow">
             {li}
           </ul>
         </div>
@@ -93,9 +93,12 @@ const Navbar = () => {
                     <IoSettingsOutline className="text-[18px]" />
                     Setting
                   </li>
-                  <li className="flex items-center gap-2.5 text-md font-medium">
-                    <FaRegUserCircle className="text-[18px]" />
-                    Profile
+                  <li className="">
+                    <Link className="flex items-center gap-2.5 text-md font-medium" to="/dashboard/profile">
+                      {" "}
+                      <FaRegUserCircle className="text-[18px]" />
+                      Profile
+                    </Link>
                   </li>
                   <li className="flex items-center gap-2.5 text-md font-medium">
                     {" "}

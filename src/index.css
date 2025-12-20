@@ -21,8 +21,8 @@ nav .active {
 
 @media (max-width: 600px) {
   nav .active {
-    background: linear-gradient(to top, #df860034, #df860000);
-    border-bottom: none;
+    color: #ffa33b;
+    font-weight: bold;
   }
 }
 
