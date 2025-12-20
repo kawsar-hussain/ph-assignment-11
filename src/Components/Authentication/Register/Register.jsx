@@ -52,6 +52,7 @@ const Register = () => {
     const upazila = form.upazila.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    const bloodGroup = form.bloodGroup.value;
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(password)) {
@@ -86,6 +87,7 @@ const Register = () => {
       upazila,
       password,
       status: "active",
+      bloodGroup,
     };
 
     console.log(formData);
@@ -130,6 +132,20 @@ const Register = () => {
             <input type="text" name="name" className="input placeholder-gray-500 input-sm md:input-md" placeholder="Name" required />
             <input type="email" name="email" className="input placeholder-gray-500 input-sm md:input-md" placeholder="Email" required />
             <input type="file" name="photo" className="file-input " />
+
+            {/* Blood Group */}
+            <select name="bloodGroup" className="select">
+              <option value="">Select Blood Group</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+              <option>O+</option>
+              <option>O-</option>
+            </select>
+
             {/* district */}
             <select name="district" defaultValue="" className="select">
               <option value="" disabled>

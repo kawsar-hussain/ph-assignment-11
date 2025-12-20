@@ -1,14 +1,23 @@
-import React, { use } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { IoIosArrowDown, IoIosArrowUp, IoIosLogOut } from "react-icons/io";
 import { IoMoonOutline, IoSettingsOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
+import axios from "axios";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const [dbUser, setDbuser] = useState("");
   const navigate = useNavigate();
+
+  // fetch user data
+  useEffect(() => {
+    axios.get(`http://localhost:3000/users/${user?.email}`).then((res) => {
+      setDbuser(res.data);
+    });
+  }, [user?.email]);
 
   const li = (
     <>
@@ -76,7 +85,7 @@ const Navbar = () => {
               </div>
               <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className="btn shadow-none bg-transparent px-0 border-none">
-                  <img src={`${user.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full border border-[#ffa647]"></img>
+                  <img src={`${dbUser.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full border border-[#ffa647]"></img>
                 </div>
 
                 <ul className="dropdown-content  bg-black/60  backdrop-blur-2xl space-y-3 rounded-box z-50 p-3 shadow-sm w-[200px] whitespace-normal *:text-white">

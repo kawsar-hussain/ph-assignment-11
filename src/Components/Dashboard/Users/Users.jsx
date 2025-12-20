@@ -11,7 +11,6 @@ const Users = () => {
 
   const fetchUser = () => {
     axios.get("http://localhost:3000/users").then((res) => {
-      // console.log(res.data.role);
       setUsers(res.data);
     });
   };

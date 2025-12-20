@@ -17,10 +17,7 @@ const Aside = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
-      // console.log(res.data.role);
       setDbUser(res.data);
-
-      console.log(res.data);
     });
   }, [user]);
 
@@ -56,12 +53,12 @@ const Aside = () => {
               <div className="w-full aspect-square ">
                 <Link>
                   {" "}
-                  <img src={user.photoURL} alt="" className="w-[180px] h-[180px] m-auto object-cover rounded-full border-4 border-base-300" />
+                  <img src={dbUser.photoURL} alt="" className="w-[180px] h-[180px] m-auto object-cover rounded-full border-4 border-base-300" />
                 </Link>
               </div>
             </div>
             <div className="text-center pt-3 pb-8">
-              <p className="text-white  text-xl font-bold ">{user.displayName}</p>
+              <p className="text-white  text-xl font-bold ">{dbUser.name}</p>
               <p className="text-md mt-1 text-gray-300 flex items-center justify-center gap-1 capitalize">
                 <MdVerified className="text-xl text-[#1b76ff]" /> {dbUser.role}
               </p>
