@@ -12,7 +12,7 @@ const DonationRequestDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/donation-request/${id}`)
+      .get(`https://server-11-zeta.vercel.app/donation-request/${id}`)
       .then((res) => {
         setRequest(res.data);
       })

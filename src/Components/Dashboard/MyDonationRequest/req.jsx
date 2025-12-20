@@ -13,7 +13,7 @@ const Req = () => {
     // 2. Only run if user email exists
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/my-requests?email=${user.email}`)
+        .get(`https://server-11-zeta.vercel.app/my-requests?email=${user.email}`)
         .then((response) => {
           setRequests(response.data);
           setLoading(false);

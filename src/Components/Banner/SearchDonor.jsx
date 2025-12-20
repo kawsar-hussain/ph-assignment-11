@@ -17,7 +17,7 @@ const SearchDonor = () => {
   // fetch donation requests
   useEffect(() => {
     axios
-      .get("http://localhost:3000/create-donation-request")
+      .get("https://server-11-zeta.vercel.app/create-donation-request")
       .then((res) => {
         const data = res.data || [];
         setRequests(data);

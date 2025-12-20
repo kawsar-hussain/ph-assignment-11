@@ -58,7 +58,7 @@ const CreateDonationRequest = () => {
     console.log(formData);
 
     axios
-      .post("http://localhost:3000/create-donation-request", formData)
+      .post("https://server-11-zeta.vercel.app/create-donation-request", formData)
       .then((res) => {
         console.log(res.data);
       })
@@ -80,7 +80,7 @@ const CreateDonationRequest = () => {
 
   return (
     <div className="flex justify-center items-center ">
-      {dbUser.status === "active" ? (
+      {dbUser.status === "active" && (
         <div className="max-w-4xl mx-auto p-6  shadow-xl rounded-box bg-black/20 backdrop-blur-sm border border-white/15 ">
           <h2 className="text-2xl font-bold text-center mb-7 text-white">Post Request For Blood</h2>
           <form onSubmit={handleSubmit}>
@@ -210,9 +210,9 @@ const CreateDonationRequest = () => {
             </div>
           </form>
         </div>
-      ) : (
-        <BlockedUser></BlockedUser>
       )}
+
+      {dbUser.status === "blocked" && <BlockedUser></BlockedUser>}
     </div>
   );
 };

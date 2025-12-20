@@ -99,7 +99,7 @@ const Register = () => {
             .then(() => {
               setUser(result.user);
               axios
-                .post("http://localhost:3000/users", formData)
+                .post("https://server-11-zeta.vercel.app/users", formData)
                 .then((res) => {
                   console.log(res.data);
                 })

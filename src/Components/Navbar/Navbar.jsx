@@ -14,7 +14,7 @@ const Navbar = () => {
 
   // fetch user data
   useEffect(() => {
-    axios.get(`http://localhost:3000/users/${user?.email}`).then((res) => {
+    axios.get(`https://server-11-zeta.vercel.app/users/${user?.email}`).then((res) => {
       setDbuser(res.data);
     });
   }, [user?.email]);

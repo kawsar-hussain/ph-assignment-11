@@ -10,7 +10,7 @@ const Users = () => {
   const filteredUsers = statusFilter ? users.filter((user) => user.status === statusFilter) : users;
 
   const fetchUser = () => {
-    axios.get("http://localhost:3000/users").then((res) => {
+    axios.get("https://server-11-zeta.vercel.app/users").then((res) => {
       setUsers(res.data);
     });
   };
@@ -20,14 +20,14 @@ const Users = () => {
   }, []);
 
   const handleStatusChange = (email, status) => {
-    axios.patch(`http://localhost:3000/update/user-status?email=${email}&status=${status}`).then((res) => {
+    axios.patch(`https://server-11-zeta.vercel.app/update/user-status?email=${email}&status=${status}`).then((res) => {
       console.log(res.data);
       fetchUser();
     });
   };
 
   const handleUserRoleChange = (email, role) => {
-    axios.patch(`http://localhost:3000/update/user-role?email=${email}&role=${role}`).then((res) => {
+    axios.patch(`https://server-11-zeta.vercel.app/update/user-role?email=${email}&role=${role}`).then((res) => {
       console.log(res.data);
       fetchUser();
     });
@@ -85,7 +85,9 @@ const Users = () => {
                 </td>
                 <td>{user.email}</td>
                 <td>
-                  <div className={`btn btn-sm h-6 shadow-none border-none ${user.status === "active" ? "bg-[#ffffff90] text-black" : "bg-[#ff000045] text-gray-300"}`}>{user.status}</div>
+                  <div className={`btn btn-sm h-6 shadow-none border-none w-[70px] ${user.status === "active" ? "bg-[#00a300] border-none shadow-none text-white" : "bg-[#d20000] text-gray-300"}`}>
+                    {user.status}
+                  </div>
                 </td>
                 <th>
                   <div className="dropdown dropdown-end ">

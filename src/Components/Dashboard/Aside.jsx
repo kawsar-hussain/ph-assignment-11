@@ -16,7 +16,7 @@ const Aside = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+    axios.get(`https://server-11-zeta.vercel.app/users/${user.email}`).then((res) => {
       setDbUser(res.data);
     });
   }, [user]);

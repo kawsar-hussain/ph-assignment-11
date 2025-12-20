@@ -5,7 +5,7 @@ const DonationRequests = () => {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/create-donation-request").then((res) => {
+    axios.get("https://server-11-zeta.vercel.app/create-donation-request").then((res) => {
       setRequests(res.data);
     });
   }, []);

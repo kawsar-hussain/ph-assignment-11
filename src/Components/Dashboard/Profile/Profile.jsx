@@ -15,10 +15,11 @@ const Profile = () => {
   const [reqUpazila, setReqUpazila] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [photo, setPhoto] = useState(loggedUser.photoURL);
 
   // fetch user data
   const fetchData = () => {
-    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+    axios.get(`https://server-11-zeta.vercel.app/users/${user.email}`).then((res) => {
       setLoggedUser(res.data);
       setBloodGroup(res.data.bloodGroup);
       setReqDis(res.data.district);
@@ -66,6 +67,8 @@ const Profile = () => {
     const upazila = form.upazila.value;
     const bloodGroup = form.bloodGroup.value;
 
+    console.log(file);
+
     const res = await axios.post(
       `https://api.imgbb.com/1/upload?key=5033f18b458c917ae4642dc2b34e41db`,
       { image: file },
@@ -76,12 +79,11 @@ const Profile = () => {
       }
     );
 
-    const uploadedPhotoURL = res.data.data.display_url;
-    console.log(uploadedPhotoURL);
+    setPhoto(res.data.data.display_url);
 
     const formData = {
       name,
-      photoURL: uploadedPhotoURL,
+      photoURL: photo,
       district,
       upazila,
       bloodGroup,
@@ -90,7 +92,7 @@ const Profile = () => {
     console.log(formData);
 
     axios
-      .put(`http://localhost:3000/update/profile/${user.email}`, formData)
+      .put(`https://server-11-zeta.vercel.app/update/profile/${user.email}`, formData)
       .then((res) => {
         console.log(res.data);
       })
@@ -153,7 +155,7 @@ const Profile = () => {
                 <div className="form-control">
                   <div className="flex gap-1 items-center h-10 md:h-12">
                     <span className="btn btn-xs bg-[#f59700] border-none shadow-none text-white">{user?.role || "donor"}</span>
-                    <span className="btn btn-xs bg-[#117cff] border-none shadow-none text-white text-xs">Active</span>
+                    <span className="btn btn-xs bg-[#00ba00] border-none shadow-none text-white text-xs">Active</span>
                   </div>
                 </div>
               </div>
@@ -171,10 +173,11 @@ const Profile = () => {
                   name="name"
                   defaultValue={loggedUser?.name}
                   readOnly={!isEditable}
-                  className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-base-300 w-full" : "bg-white/10 text-white w-full"}`}
+                  className={`input input-sm md:input-md ${!isEditable ? "bg-transparent border-white/10 text-base-300 w-full" : "bg-white text-black w-full"}`}
                 />
               </div>
 
+              {/* file */}
               {isEditable && (
                 <div className="form-control">
                   <label className="label">

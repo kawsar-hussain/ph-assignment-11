@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
@@ -14,6 +14,7 @@ const UpdateRequest = () => {
   const [bloodGroup, setBloodGroup] = useState("");
   const [reqDis, setReqDis] = useState("");
   const [reqUpazila, setReqUpazila] = useState("");
+  const navigate = useNavigate();
 
   console.log(bloodGroup);
 
@@ -22,7 +23,7 @@ const UpdateRequest = () => {
   // fetch data of request
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/donation-request/${id}`)
+      .get(`https://server-11-zeta.vercel.app/donation-request/${id}`)
       .then((res) => {
         setRequest(res.data);
         setBloodGroup(res.data.bloodGroup);
@@ -79,7 +80,7 @@ const UpdateRequest = () => {
     console.log(formData);
 
     axios
-      .put(`http://localhost:3000/update/request/${id}`, formData)
+      .put(`https://server-11-zeta.vercel.app/update/request/${id}`, formData)
       .then((res) => {
         console.log(res.data);
         toast.success("Data updated successfully.");
@@ -88,8 +89,10 @@ const UpdateRequest = () => {
         console.log(err);
       });
 
+    navigate("/dashboard/my-donation-requests");
+
     Swal.fire({
-      title: "Drag me!",
+      title: "Update Successfully!",
       icon: "success",
       draggable: true,
     });

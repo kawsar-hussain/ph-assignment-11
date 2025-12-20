@@ -10,7 +10,7 @@ const WebsiteInfo = () => {
 
   // users
   useEffect(() => {
-    axios.get("http://localhost:3000/users").then((res) => {
+    axios.get("https://server-11-zeta.vercel.app/users").then((res) => {
       // console.log(res.data.role);
       setUsers(res.data);
     });
@@ -19,7 +19,7 @@ const WebsiteInfo = () => {
   // requests
 
   useEffect(() => {
-    axios.get("http://localhost:3000/create-donation-request").then((res) => {
+    axios.get("https://server-11-zeta.vercel.app/create-donation-request").then((res) => {
       console.log(res.data);
       setRequests(res.data);
     });

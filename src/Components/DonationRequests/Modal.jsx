@@ -7,7 +7,7 @@ const Modal = ({ request }) => {
 
   // update donation status function
   const handleStatusChange = (id, status) => {
-    axios.patch(`http://localhost:3000/update/donation-status/${id}`, { status }).then((res) => {
+    axios.patch(`https://server-11-zeta.vercel.app/update/donation-status/${id}`, { status }).then((res) => {
       console.log(res.data);
     });
   };

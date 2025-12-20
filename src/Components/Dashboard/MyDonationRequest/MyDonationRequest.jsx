@@ -10,7 +10,7 @@ const MyDonationRequest = () => {
   const [modalCallback, setModalCallback] = useState(null);
 
   const fetchUser = () => {
-    axios.get(`http://localhost:3000/my-requests?email=${user.email}`).then((res) => {
+    axios.get(`https://server-11-zeta.vercel.app/my-requests?email=${user.email}`).then((res) => {
       console.log(res.data);
       setRequests(res.data);
     });
@@ -23,7 +23,7 @@ const MyDonationRequest = () => {
 
   // update donation status function
   const handleStatusChange = (id, status) => {
-    axios.patch(`http://localhost:3000/update/donation-status/${id}`, { status }).then((res) => {
+    axios.patch(`https://server-11-zeta.vercel.app/update/donation-status/${id}`, { status }).then((res) => {
       console.log(res.data);
       fetchUser();
     });
@@ -32,7 +32,7 @@ const MyDonationRequest = () => {
   // delete request function
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/delete/${id}`)
+      .delete(`https://server-11-zeta.vercel.app/delete/${id}`)
       .then((res) => {
         console.log(res.data);
         const filterData = requests.filter((request) => request._id !== id);

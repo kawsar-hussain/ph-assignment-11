@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user) return;
-    axios.get(`http://localhost:3000/users/${user.email}`).then((res) => {
+    axios.get(`https://server-11-zeta.vercel.app/users/${user.email}`).then((res) => {
       // console.log(res.data.role);
       setDbuser(res.data);
     });
