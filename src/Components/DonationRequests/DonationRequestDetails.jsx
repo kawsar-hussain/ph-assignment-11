@@ -25,7 +25,16 @@ const DonationRequestDetails = () => {
     <div className="w-[35%] m-auto lg:py-15 py-10 px-5">
       <div className="card bg-white/10 backdrop-blur-xl shadow-2xl text-white border border-white/10">
         <div className="card-body gap-3">
-          <h2 className="text-2xl font-bold text-center mb-3">Looking for {request.bloodGroup} Blood</h2>
+          <h2 className="text-2xl font-bold text-center mb-3 flex items-center justify-center gap-2 text-white">
+            Looking for
+            <span className="relative inline-block animate-[heartbeat_1.5s_ease-in-out_infinite]">
+              {/* Inner Glow Aura */}
+              <span className="absolute inset-0 rounded-full bg-[#ed4f00] blur-md opacity-40"></span>
+
+              <span className="relative bg-linear-to-b from-[#ed4f00] to-[#991b1b] text-white px-5 py-1 rounded-full shadow-lg italic font-black">{request.bloodGroup}</span>
+            </span>
+            Blood
+          </h2>
 
           <div className="mb-2">
             <h2 className="text-xl font-semibold">{request.recipientName}</h2>

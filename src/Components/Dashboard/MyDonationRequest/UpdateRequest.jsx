@@ -105,7 +105,7 @@ const UpdateRequest = () => {
               <label className="label">
                 <span className="label-text">Requester Name</span>
               </label>
-              <input type="text" name="requesterName" value={user.displayName} readOnly className=" input input-bordered bg-base-300 w-full" />
+              <input type="text" name="requesterName" value={user.displayName} readOnly className="cursor-not-allowed  input input-bordered bg-base-300 w-full" />
             </div>
 
             {/* Requester Email */}
@@ -113,7 +113,7 @@ const UpdateRequest = () => {
               <label className="label">
                 <span className="label-text">Requester Email</span>
               </label>
-              <input type="email" name="requesterEmail" value={user.email} readOnly className="input input-bordered bg-base-300 w-full" />
+              <input type="email" name="requesterEmail" value={user.email} readOnly className="cursor-not-allowed input input-bordered bg-base-300 w-full" />
             </div>
 
             {/* Recipient Name */}

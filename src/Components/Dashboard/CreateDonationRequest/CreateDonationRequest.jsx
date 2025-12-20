@@ -90,7 +90,7 @@ const CreateDonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Requester Name</span>
                 </label>
-                <input type="text" name="requesterName" value={user.displayName} readOnly className=" input input-bordered bg-[#e4e4e4] w-full" required />
+                <input type="text" name="requesterName" value={user.displayName} readOnly className="cursor-not-allowed  input input-bordered bg-[#e4e4e4] w-full" required />
               </div>
 
               {/* Requester Email */}
@@ -98,7 +98,7 @@ const CreateDonationRequest = () => {
                 <label className="label">
                   <span className="label-text">Requester Email</span>
                 </label>
-                <input type="email" name="requesterEmail" value={user.email} readOnly className="input input-bordered bg-[#e4e4e4] w-full" required />
+                <input type="email" name="requesterEmail" value={user.email} readOnly className="cursor-not-allowed input input-bordered bg-[#e4e4e4] w-full" required />
               </div>
 
               {/* Recipient Name */}

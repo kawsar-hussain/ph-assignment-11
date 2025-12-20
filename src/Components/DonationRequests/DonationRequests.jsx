@@ -10,26 +10,31 @@ const DonationRequests = () => {
     });
   }, []);
   return (
-    <div className="lg:px-20 py-10 px-5">
+    <div className="lg:px-20 py-10 px-5 h-auto lg:min-h-[92vh]">
       <h2 className="text-4xl text-base-300 font-bold text-center mb-10">Donation Requests</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {requests.map((request) => (
-          <div key={request._id} className="bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md text-white flex flex-col justify-between">
-            <h3 className="text-2xl font-semibold mb-3">
-              Blood Needed: <span className="bg-white/30 px-3 py-1 rounded ">{request.bloodGroup}</span>
-            </h3>
-
-            {/* Recipient Name */}
-            <h2 className="text-lg font-semibold mb-2">{request.recipientName}</h2>
-
-            <div className="flex justify-between">
+          <div key={request._id} className="bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md border border-white/15 text-white flex flex-col justify-between">
+            <div className="flex justify-between items-center mb-6">
               <div className="">
-                {/* Location */}
-                <p className="text-sm mb-1">
-                  <span className="font-medium">Location: </span>
+                <h2 className="text-2xl font-semibold">{request.recipientName}</h2>
+                <p className="text-sm text-gray-300">
                   {request.upazila}, {request.district}
                 </p>
+              </div>
 
+              <h3 className="text-2xl font-semibold mb-3">
+                <div className="relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-full group">
+                  <div className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ed4f00_0%,#ffffff_50%,#991b1b_100%)]"></div>
+
+                  <span className="relative bg-linear-to-b from-[#ed4f00] to-[#991b1b] text-white px-5 py-1 rounded-full italic font-black z-10">{request.bloodGroup}</span>
+                </div>
+              </h3>
+            </div>
+
+            {/* Recipient Name */}
+            <div className="flex justify-between">
+              <div className="">
                 {/* Date */}
                 <p className="text-sm mb-1">
                   <span className="font-medium">Date: </span>
