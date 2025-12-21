@@ -1,25 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Loader from "../../Loader";
 const DonationRequests = () => {
   const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios.get("https://server-11-zeta.vercel.app/create-donation-request").then((res) => {
       setRequests(res.data);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="lg:px-20 py-10 px-5 h-auto lg:min-h-[92vh]">
       <div className="relative flex flex-col items-center mb-16 select-none">
         {/* Soft background glow to separate text from the red BG */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-20 bg-white/10 blur-[80px] pointer-events-none"></div>
 
-        <h2 className="relative text-5xl md:text-6xl font-black text-center uppercase italic tracking-tighter">
+        <h2 className="relative text-5xl md:text-6xl font-black text-center uppercase italic tracking-tighter space-x-3">
           <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">Donation</span>
-          <span className="block md:inline pr-2 ml-0 md:ml-4 text-transparent bg-clip-text bg-linear-to-r from-yellow-300 via-white to-yellow-500 drop-shadow-[0_0_10px_rgba(253,224,71,0.3)]">
-            Requests
-          </span>
+          <span className="pr-2 bg-clip-text text-transparent bg-linear-to-tr from-[#ffa41c] to-[#ed4f00]">Requests</span>
         </h2>
 
         <div className="relative mt-6 flex items-center justify-center gap-3">

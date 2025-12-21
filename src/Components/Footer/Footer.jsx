@@ -1,95 +1,99 @@
 import React from "react";
 import { Link } from "react-router";
+import { FaFacebookF, FaYoutube, FaTwitter } from "react-icons/fa";
+import { MdSearch, MdPhone } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="px-0 lg:px-20 bg-[#1a1a1a] border-t border-red-900/20 p-10 px-5">
-      {/* Main footer */}
-      <footer className="footer sm:footer-horizontal text-white pb-10">
-        {/* Donation Info */}
-        <nav>
-          <h6 className="text-red-500 text-xl font-bold mb-2">Blood Groups</h6>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-1">
-            <span className="opacity-80">A+ / A-</span>
-            <span className="opacity-80">B+ / B-</span>
-            <span className="opacity-80">AB+ / AB-</span>
-            <span className="opacity-80">O+ / O-</span>
+    <div className="relative mt-20 border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
+      {/* top section: main navigation */}
+      <footer className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-white">
+        {/* brand column */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-linear-to-tr from-[#dc4900] to-[#ffa41c] shadow-[0_0_20px_rgba(220,73,0,0.3)]">
+              <img src="/logo.png" alt="Logo" className="w-8 h-8 brightness-0 invert" />
+            </div>
+            <span className="text-2xl font-black italic tracking-tighter uppercase">
+              Donate<span className="text-[#ffa41c]">X</span>
+            </span>
           </div>
-          <Link to="/search-donor" className="btn btn-sm shadow-none mt-2 text-red-600">
-            Search Donors
-          </Link>
-        </nav>
+          <p className="text-white/40 text-sm leading-relaxed italic">Connecting heroes with those in need. A high-performance platform for seamless blood donation management.</p>
+          <div className="flex gap-4">
+            {[FaFacebookF, FaTwitter, FaYoutube].map((Icon, i) => (
+              <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#dc4900] hover:text-white transition-all duration-300">
+                <Icon size={16} />
+              </a>
+            ))}
+          </div>
+        </div>
 
-        {/* Quick Navigation */}
-        <nav>
-          <h6 className="text-white text-xl font-bold mb-2">Navigation</h6>
-          <Link to="/" className="link link-hover">
-            Home
+        {/* blood groups column */}
+        <div>
+          <h6 className="text-sm font-black uppercase tracking-[0.2em] mb-6 text-[#dc4900]">Blood Groups</h6>
+          <div className="grid grid-cols-2 gap-3 text-[11px] font-black italic tracking-widest text-white/40 uppercase">
+            {[
+              { type: "A+", sub: "A-" },
+              { type: "B+", sub: "B-" },
+              { type: "AB+", sub: "AB-" },
+              { type: "O+", sub: "O-" },
+            ].map((group, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white/3 border border-white/5 hover:border-[#dc4900]/30 hover:bg-[#dc4900]/5 hover:text-white transition-all duration-300 group"
+              >
+                <span className="group-hover:text-[#ffa41c] transition-colors">{group.type}</span>
+                <span className="text-[8px] opacity-30">/</span>
+                <span className="group-hover:text-[#ffa41c] transition-colors">{group.sub}</span>
+              </div>
+            ))}
+          </div>
+          <Link
+            to="/search-donor"
+            className="mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest py-3 px-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#ffa41c] hover:text-[#ffa41c] transition-all w-fit"
+          >
+            <MdSearch size={18} /> Search Donors
           </Link>
-          <Link to="/donation-requests" className="link link-hover">
-            Donation Requests
-          </Link>
-          <Link to="/blog" className="link link-hover">
-            Health Tips
-          </Link>
-          <Link to="/funding" className="link link-hover">
-            Funding
-          </Link>
-        </nav>
+        </div>
 
-        {/* Support & Legal */}
-        <nav>
-          <h6 className="text-white text-xl font-bold mb-2">Support</h6>
-          <a className="link link-hover">Contact Us</a>
-          <a className="link link-hover">Privacy Policy</a>
-          <a className="link link-hover">Terms of Service</a>
-          <a className="link link-hover">Volunteer Login</a>
-        </nav>
+        {/* navigation column */}
+        <div>
+          <h6 className="text-sm font-black uppercase tracking-[0.2em] mb-6 text-white">Navigation</h6>
+          <nav className="flex flex-col gap-3">
+            {[{ name: "Home", path: "/" }, { name: "Donation Requests", path: "/donation-requests" }, { name: "Health Tips" }, { name: "Funding", path: "/funding" }].map((link) => (
+              <Link key={link.path} to={link.path} className="text-sm text-white/40 hover:text-[#ffa41c] hover:translate-x-1 transition-all italic font-medium">
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* support column */}
+        <div>
+          <h6 className="text-sm font-black uppercase tracking-[0.2em] mb-6 text-white">Support</h6>
+          <nav className="flex flex-col gap-3">
+            {["Contact Us", "Privacy Policy", "Terms of Service", "Volunteer Login"].map((item) => (
+              <a key={item} className="text-sm text-white/40 hover:text-white transition-all cursor-pointer italic font-medium">
+                {item}
+              </a>
+            ))}
+            <div className="mt-4 flex items-center gap-3 text-white/60">
+              <MdPhone className="text-[#dc4900]" />
+              <span className="text-xs font-mono">+880 1234-567890</span>
+            </div>
+          </nav>
+        </div>
       </footer>
 
-      {/* Bottom footer */}
-      <footer className="footer flex lg:flex-row flex-col justify-between items-center text-white border-t border-gray-800 px-10 py-8">
-        <aside className="flex items-center gap-4">
-          <div className="bg-white rounded p-1 w-12 h-12 flex items-center justify-center shadow-lg shadow-red-900/20">
-            {/* Simple Blood Drop Icon for Logo */}
-            <img src="/logo.png" alt="" />
-          </div>
-          <div className="text-left">
-            <p className="text-xl font-bold leading-none">DonateX</p>
-            <p className="text-gray-400 text-sm mt-2 max-w-xs">Connecting heroes with those in need. A MERN-stack platform for seamless blood donation management.</p>
-          </div>
-        </aside>
-
-        <nav className="flex flex-col items-center lg:items-end gap-4 mt-6 lg:mt-0">
-          <div className="grid grid-flow-col gap-6">
-            {/* Updated X (Twitter) Logo as per requirements */}
-            <a href="https://x.com" target="_blank" rel="noreferrer" aria-label="X">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.055-4.425 5.055H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z" />
-              </svg>
-            </a>
-            <a href="#" aria-label="Facebook">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
-            </a>
-            <a href="#" aria-label="YouTube">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
-            </a>
-          </div>
-          <p className="text-xs text-gray-500">Contact: +880 1234-567890</p>
-        </nav>
-      </footer>
-
-      <div className="bg-[#141414] py-6  border-gray-800">
-        <p className="text-gray-500 text-center text-sm">
-          &copy; 2025 Blood Donation Application.
-          <span className="mx-2">|</span>
-          Built with MERN Stack
-          <span className="block mt-1 opacity-70">Empowering Donors, Saving Lives. All rights reserved.</span>
-        </p>
+      {/* bottom credits with background image */}
+      <div className="relative border-t border-white/5 bg-[url('/bg.png')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 text-center md:text-left">
+            © 2025 <span className="text-white">DonateX System</span> | Built with MERN Stack
+          </p>
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#dc4900] italic">Empowering Donors, Saving Lives.</p>
+        </div>
       </div>
     </div>
   );

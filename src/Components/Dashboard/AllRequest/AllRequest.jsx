@@ -4,17 +4,21 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import DashboardLoader from "../../../DashboardLoader";
 
 const AllRequest = () => {
   const [requests, setRequests] = useState([]);
   const { dbUser } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalCallback, setModalCallback] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchUser = () => {
+    setLoading(true);
     axios.get("https://server-11-zeta.vercel.app/create-donation-request").then((res) => {
       console.log(res.data);
       setRequests(res.data);
+      setLoading(false);
     });
   };
 
@@ -51,6 +55,10 @@ const AllRequest = () => {
       draggable: true,
     });
   };
+
+  if (loading) {
+    return <DashboardLoader></DashboardLoader>;
+  }
 
   return (
     <div>

@@ -15,8 +15,8 @@ nav .active {
 }
 
 .aside-div .active {
-  background-color: rgb(255, 230, 230);
-  color: rgb(40, 40, 40);
+  background: linear-gradient(to top right, #dc4900, #ffa41c);
+  color: white;
 }
 
 @media (max-width: 600px) {

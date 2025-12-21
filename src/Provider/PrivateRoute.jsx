@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Navigate, useLocation } from "react-router";
 import Loader from "../Loader";
+import DashboardLoader from "../DashboardLoader";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = use(AuthContext);
@@ -9,7 +10,7 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   // console.log(location);
   if (loading) {
-    return <Loader></Loader>;
+    return <DashboardLoader></DashboardLoader>;
   }
   // Require verified email before allowing access
   if (user) {

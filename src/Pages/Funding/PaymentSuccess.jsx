@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
   const sessionId = searchParams.get("session_id");
 
   useEffect(() => {
-    axios.post(`http://localhost:3000/success-payment?session_id=${sessionId}`).then((res) => {
+    axios.post(`https://server-11-zeta.vercel.app/success-payment?session_id=${sessionId}`).then((res) => {
       console.log(res.data);
     });
   }, [sessionId]);

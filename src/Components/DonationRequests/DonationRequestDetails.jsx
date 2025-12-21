@@ -3,23 +3,30 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Modal from "./Modal";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Loader from "../../Loader";
 
 const DonationRequestDetails = () => {
   const { id } = useParams();
   const [request, setRequest] = useState("");
   const { user } = useContext(AuthContext);
-  console.log(request);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`https://server-11-zeta.vercel.app/donation-request/${id}`)
       .then((res) => {
         setRequest(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
       });
   }, [id]);
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="lg:px-20 px-5 lg:min-h-[92vh] h-auto py-10">

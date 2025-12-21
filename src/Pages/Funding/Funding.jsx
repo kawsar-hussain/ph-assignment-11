@@ -17,14 +17,14 @@ const Funding = () => {
       donorEmail,
       donorName,
     };
-    axios.post("http://localhost:3000/create-payment-checkout", formData).then((res) => {
+    axios.post("https://server-11-zeta.vercel.app/create-payment-checkout", formData).then((res) => {
       console.log(res.data);
       window.location.href = res.data.url;
     });
   };
 
   return (
-    <div className="lg:min-h-[92vh] h-auto">
+    <div className="lg:min-h-[92vh] h-auto ">
       <div className="flex flex-col justify-center items-center h-[92vh] px-5">
         <div className="text-center mb-10 space-y-3">
           <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter drop-shadow-lg">

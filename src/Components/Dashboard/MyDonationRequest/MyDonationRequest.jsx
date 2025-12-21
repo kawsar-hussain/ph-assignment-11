@@ -3,16 +3,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
+import DashboardLoader from "../../../DashboardLoader";
 const MyDonationRequest = () => {
   const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalCallback, setModalCallback] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchUser = () => {
+    setLoading(true);
     axios.get(`https://server-11-zeta.vercel.app/my-requests?email=${user.email}`).then((res) => {
       console.log(res.data);
       setRequests(res.data);
+      setLoading(false);
     });
   };
 
@@ -43,6 +47,10 @@ const MyDonationRequest = () => {
         console.error(err);
       });
   };
+
+  if (loading) {
+    return <DashboardLoader></DashboardLoader>;
+  }
 
   return (
     <div>

@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import Loader from "../../../Loader";
 import { FaRegEdit } from "react-icons/fa";
+import DashboardLoader from "../../../DashboardLoader";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -16,14 +17,17 @@ const Profile = () => {
   const [bloodGroup, setBloodGroup] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [photo, setPhoto] = useState(loggedUser.photoURL);
+  const [loading, setLoading] = useState(false);
 
   // fetch user data
   const fetchData = () => {
+    setLoading(true);
     axios.get(`https://server-11-zeta.vercel.app/users/${user.email}`).then((res) => {
       setLoggedUser(res.data);
       setBloodGroup(res.data.bloodGroup);
       setReqDis(res.data.district);
       setReqUpazila(res.data.upazila);
+      setLoading(false);
     });
   };
   useEffect(() => {
@@ -110,6 +114,10 @@ const Profile = () => {
     setIsSubmitting(false);
     fetchData();
   };
+
+  if (loading) {
+    return <DashboardLoader></DashboardLoader>;
+  }
 
   return (
     <div className="lg:h-[92vh] h-auto flex items-center justify-center px-4 md:px-0 py-10">

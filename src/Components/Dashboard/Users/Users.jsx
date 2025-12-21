@@ -2,16 +2,20 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FaFilter } from "react-icons/fa";
+import DashboardLoader from "../../../DashboardLoader";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const filteredUsers = statusFilter ? users.filter((user) => user.status === statusFilter) : users;
 
   const fetchUser = () => {
+    setLoading(true);
     axios.get("https://server-11-zeta.vercel.app/users").then((res) => {
       setUsers(res.data);
+      setLoading(false);
     });
   };
 
@@ -32,6 +36,10 @@ const Users = () => {
       fetchUser();
     });
   };
+
+  if (loading) {
+    return <DashboardLoader></DashboardLoader>;
+  }
 
   return (
     <div>

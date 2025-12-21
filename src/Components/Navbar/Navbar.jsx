@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar lg:h-[8vh] h-auto bg-[#00000034] backdrop-blur-sm  shadow-sm lg:px-20 pl-1 px-5 sticky top-0 z-10 py-0">
+    <nav className="navbar lg:h-[8vh] h-auto bg-[#00000034] backdrop-blur-sm  shadow-sm lg:px-20 pl-1 px-5 sticky top-0 z-50 py-0">
       <div className="flex">
         <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-base-300">

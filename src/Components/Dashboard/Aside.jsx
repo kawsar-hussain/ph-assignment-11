@@ -2,24 +2,32 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaBars, FaRegUserCircle, FaUsers } from "react-icons/fa";
-import { MdOutlineDashboardCustomize, MdOutlineSdStorage, MdVerified } from "react-icons/md";
+import { MdHistory, MdOutlineDashboardCustomize, MdOutlineSdStorage, MdVerified } from "react-icons/md";
 import { IoCreateOutline } from "react-icons/io5";
 import { IoIosGitPullRequest, IoIosLogOut } from "react-icons/io";
 import { VscRequestChanges } from "react-icons/vsc";
 import axios from "axios";
 import { HiOutlineHome } from "react-icons/hi";
 import { toast } from "react-toastify";
+import DashboardLoader from "../../DashboardLoader";
 
 const Aside = () => {
   const { user, logOut } = useContext(AuthContext);
   const [dbUser, setDbUser] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios.get(`https://server-11-zeta.vercel.app/users/${user.email}`).then((res) => {
       setDbUser(res.data);
+      setLoading(false);
     });
   }, [user]);
+
+  if (loading) {
+    return <DashboardLoader></DashboardLoader>;
+  }
 
   const handleLogOut = () => {
     logOut()
@@ -54,18 +62,15 @@ const Aside = () => {
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
           <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm min-h-screen w-80 p-4">
             {/* Sidebar content here */}
-            <div className="mt-4 ">
-              <div className="w-full aspect-square ">
-                <Link>
-                  {" "}
-                  <img src={dbUser.photoURL} alt="" className="w-[180px] h-[180px] m-auto object-cover rounded-full border-4 border-base-300" />
-                </Link>
-              </div>
-            </div>
-            <div className="text-center pt-3 pb-8">
-              <p className="text-white  text-xl font-bold ">{dbUser.name}</p>
-              <p className="text-md mt-1 text-gray-300 flex items-center justify-center gap-1 capitalize">
-                <MdVerified className="text-xl text-[#1b76ff]" /> {dbUser.role}
+            <Link to="/dashboard/profile" className="relative mx-auto mb-6 group mt-6">
+              <div className="absolute inset-0 bg-linear-to-tr from-[#ed4f00] to-[#ff9215] rounded-full blur-lg opacity-40 transition-opacity"></div>
+              <img src={dbUser.photoURL} alt="" className="relative w-40 h-40 m-auto object-cover rounded-full border-2 border-white/10 p-1" />
+            </Link>
+
+            <div className="text-center mb-10">
+              <p className="text-white text-xl font-black italic tracking-tight uppercase">{dbUser.name}</p>
+              <p className=" text-[10px] mt-2 text-white/70  items-center justify-center gap-1 uppercase font-black tracking-widest bg-white/5 py-1 px-3 rounded-full border border-white/5 inline-flex">
+                <MdVerified className="text-[#1b76ff] text-[14px]" /> {dbUser.role}
               </p>
             </div>
 
@@ -77,9 +82,14 @@ const Aside = () => {
 
               {/* admin link */}
               {dbUser.role === "admin" && (
-                <NavLink to="/dashboard/all-users" className="flex gap-4 items-center">
-                  <FaUsers className="text-xl" /> Users
-                </NavLink>
+                <>
+                  <NavLink to="/dashboard/all-users" className="flex gap-4 items-center">
+                    <FaUsers className="text-xl" /> Users
+                  </NavLink>
+                  <NavLink to="/dashboard/payment-history" className="flex gap-4 items-center">
+                    <MdHistory className="text-xl" /> Payment History
+                  </NavLink>
+                </>
               )}
 
               {/* admin and volunteer link */}

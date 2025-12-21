@@ -7,12 +7,25 @@ import { FaSackDollar } from "react-icons/fa6";
 const WebsiteInfo = () => {
   const [users, setUsers] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [paymentData, setPaymentData] = useState([]);
+
+  const totalPrice = paymentData.reduce((total, item) => total + item.amount, 0);
+
+  console.log(paymentData);
 
   // users
   useEffect(() => {
     axios.get("https://server-11-zeta.vercel.app/users").then((res) => {
       // console.log(res.data.role);
       setUsers(res.data);
+    });
+  }, []);
+
+  // payment data
+  useEffect(() => {
+    axios.get("https://server-11-zeta.vercel.app/success-payment").then((res) => {
+      // console.log(res.data.role);
+      setPaymentData(res.data);
     });
   }, []);
 
@@ -38,7 +51,7 @@ const WebsiteInfo = () => {
         <div className="">
           <h4 className="text-2xl">Total Funding</h4>
           <FaSackDollar className="text-6xl mt-3 m-auto" />
-          <p className="text-5xl mt-8 font-bold">5000Tk.</p>
+          <p className="text-5xl mt-8 font-bold">${totalPrice}</p>
         </div>
       </div>
       <div className="bg-linear-to-t from-black/0 via-[#dc4900ba] to-[#ffa41c] text-white text-center py-5 pb-12 rounded-t-md ">

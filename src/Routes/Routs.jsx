@@ -20,6 +20,7 @@ import SearchDonor from "../Components/Banner/SearchDonor";
 import UpdateRequest from "../Components/Dashboard/MyDonationRequest/UpdateRequest";
 import PaymentSuccess from "../Pages/Funding/PaymentSuccess";
 import PaymentCancelled from "../Pages/Funding/PaymentCancelled";
+import PaymentHistory from "../Components/Dashboard/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-donation-requests",
         element: <MyDonationRequest></MyDonationRequest>,
+      },
+      {
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
         path: "/dashboard/all-users",
