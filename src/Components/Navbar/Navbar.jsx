@@ -66,9 +66,11 @@ const Navbar = () => {
         </div>
         <Link to="/" className="lg:text-2xl text-xl font-bold flex items-center gap-1">
           <img className="lg:h-10 lg:w-10 h-8 w-8 " src="/logo.png" alt="" />
-          <span>
-            <span className="text-white">Donate</span>
-            <span className="text-white">X</span>
+          <span className="flex italic">
+            <span className="text-white ">Donate</span>
+            <span className="relative font-black italic bg-clip-text text-transparent bg-size-[200%_200%] bg-linear-to-tr from-[#ed4f00] via-[#ffbc15] to-[#ff9215] animate-[gradient-shift_3s_ease_infinite] filter drop-shadow-[0_0_10px_rgba(255,188,21,0.4)]">
+              X
+            </span>
           </span>
         </Link>
       </div>

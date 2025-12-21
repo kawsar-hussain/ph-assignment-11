@@ -18,6 +18,8 @@ import Funding from "../Pages/Funding/Funding";
 import DonationRequestDetails from "../Components/DonationRequests/DonationRequestDetails";
 import SearchDonor from "../Components/Banner/SearchDonor";
 import UpdateRequest from "../Components/Dashboard/MyDonationRequest/UpdateRequest";
+import PaymentSuccess from "../Pages/Funding/PaymentSuccess";
+import PaymentCancelled from "../Pages/Funding/PaymentCancelled";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
       {
         path: "funding",
         element: <Funding></Funding>,
+      },
+      {
+        path: "payment-success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "payment-cancelled",
+        element: <PaymentCancelled></PaymentCancelled>,
       },
       {
         path: "search-donor",

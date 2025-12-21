@@ -123,7 +123,7 @@ const Register = () => {
 
   return (
     <div className="lg:h-[92vh] h-auto flex items-center justify-center px-4 md:px-0">
-      <title>PawMart - Register</title>
+      <title>DonateX - Register</title>
 
       <div className="card w-full max-w-sm shrink-0 bg-[#0000001d] backdrop-blur-sm shadow md:max-w-md">
         <h2 className="text-center mt-5 font-bold text-white text-lg md:text-xl">Register Your Account</h2>

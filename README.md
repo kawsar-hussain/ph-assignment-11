@@ -1,8 +1,8 @@
-# Welcome to 🐾 PawMart
+# Welcome to 🐾 DonateX
 
-![PawMart Screenshot](public/pet.jpg)
+![DonateX Screenshot](public/pet.jpg)
 
-PawMart is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
+DonateX is a modern and user friendly web application designed for buying, selling, and adopting pets, as well as purchasing pet related products. Users can browse categories, view detailed product pages, and place orders easily with a clean and responsive UI.
 
 ## ✨ Features
 

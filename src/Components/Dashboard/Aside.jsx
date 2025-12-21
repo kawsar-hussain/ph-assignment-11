@@ -41,7 +41,12 @@ const Aside = () => {
           <label htmlFor="my-drawer-3" className="lg:hidden">
             <div className="bg-[#00000065] backdrop-blur-2xl py-3 px-5 flex justify-between items-center ">
               <FaBars className="text-xl hover:cursor-pointer" />
-              <h3 className="text-xl font-bold">Dashboard</h3>
+              <span className="flex italic font-bold text-xl">
+                <span className="text-white ">Donate</span>
+                <span className="relative font-black italic bg-clip-text text-transparent bg-size-[200%_200%] bg-linear-to-tr from-[#ed4f00] via-[#ffbc15] to-[#ff9215] animate-[gradient-shift_3s_ease_infinite] filter drop-shadow-[0_0_10px_rgba(255,188,21,0.4)]">
+                  X
+                </span>
+              </span>
             </div>
           </label>
         </div>
