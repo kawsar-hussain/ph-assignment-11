@@ -3,7 +3,6 @@ import axios from "axios";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const RecentDonation = () => {
@@ -40,7 +39,6 @@ const RecentDonation = () => {
         console.log(res.data);
         const filterData = requests.filter((request) => request._id !== id);
         setRequests(filterData);
-        toast.success("Item deleted successfully!");
       })
       .catch((err) => {
         console.error(err);
@@ -87,9 +85,9 @@ const RecentDonation = () => {
                 </thead>
 
                 <tbody>
-                  {requests
-                    .slice(0, 3)
+                  {[...requests]
                     .reverse()
+                    .slice(0, 3)
                     .map((request) => (
                       <tr key={request._id} className="hover:bg-[#ffffff1d]">
                         {/* Recipient Name */}

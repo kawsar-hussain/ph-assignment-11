@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router";
-import { toast } from "react-toastify";
 import DashboardLoader from "../../../DashboardLoader";
+import Swal from "sweetalert2";
 const MyDonationRequest = () => {
   const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
@@ -41,11 +41,17 @@ const MyDonationRequest = () => {
         console.log(res.data);
         const filterData = requests.filter((request) => request._id !== id);
         setRequests(filterData);
-        toast.success("Item deleted successfully!");
       })
       .catch((err) => {
         console.error(err);
       });
+
+    // sweet alert
+    Swal.fire({
+      title: "Request Deleted Successfully!",
+      icon: "success",
+      draggable: true,
+    });
   };
 
   if (loading) {

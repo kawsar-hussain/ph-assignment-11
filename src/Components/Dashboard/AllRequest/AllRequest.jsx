@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import DashboardLoader from "../../../DashboardLoader";
 
@@ -42,7 +41,6 @@ const AllRequest = () => {
         console.log(res.data);
         const filterData = requests.filter((request) => request._id !== id);
         setRequests(filterData);
-        toast.success("Item deleted successfully!");
       })
       .catch((err) => {
         console.error(err);
