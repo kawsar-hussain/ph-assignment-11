@@ -10,21 +10,21 @@ const AdminDashboard = () => {
 
   const totalPrice = paymentData.reduce((total, item) => total + item.amount, 0);
 
-  // Fetch Users
+  // fetch users
   useEffect(() => {
     axios.get("https://server-11-zeta.vercel.app/users").then((res) => {
       setUsers(res.data);
     });
   }, []);
 
-  // Fetch Payment Data
+  // fetch payment data
   useEffect(() => {
     axios.get("https://server-11-zeta.vercel.app/success-payment").then((res) => {
       setPaymentData(res.data);
     });
   }, []);
 
-  // Fetch Donation Requests
+  // fetch donation requests
   useEffect(() => {
     axios.get("https://server-11-zeta.vercel.app/create-donation-request").then((res) => {
       setRequests(res.data);
@@ -44,7 +44,6 @@ const AdminDashboard = () => {
         <p className="text-gray-400 text-sm mt-1 uppercase tracking-[0.2em]">system overview & analytics</p>
       </header>
 
-      {/* stats grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
         {[
           { label: "Total Users", value: users.length, icon: <IoPeople />, color: "from-blue-500 to-cyan-400" },
@@ -62,7 +61,6 @@ const AdminDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* dynamic activity section */}
         <div className="lg:col-span-2 bg-white/5 border border-white/10 rounded-3xl p-4 lg:p-8 backdrop-blur-md">
           <div className="flex lg:flex-row flex-col justify-between items-center mb-6">
             <h3 className="text-xl font-black italic uppercase tracking-wider">
@@ -100,7 +98,6 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* system health remains static for UI feel */}
         <div className="bg-white/5 border border-white/10 rounded-3xl p-4 lg:p-8 backdrop-blur-md flex flex-col justify-between">
           <div>
             <h3 className="text-xl font-black italic uppercase tracking-wider mb-6">
