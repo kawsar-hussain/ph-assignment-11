@@ -16,7 +16,6 @@ const Profile = () => {
   const [reqUpazila, setReqUpazila] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [photo, setPhoto] = useState(loggedUser.photoURL);
   const [loading, setLoading] = useState(false);
 
   // fetch user data
@@ -71,8 +70,6 @@ const Profile = () => {
     const upazila = form.upazila.value;
     const bloodGroup = form.bloodGroup.value;
 
-    console.log(file);
-
     const res = await axios.post(
       `https://api.imgbb.com/1/upload?key=5033f18b458c917ae4642dc2b34e41db`,
       { image: file },
@@ -83,11 +80,9 @@ const Profile = () => {
       }
     );
 
-    setPhoto(res.data.data.display_url);
-
     const formData = {
       name,
-      photoURL: photo,
+      photoURL: res.data.data.display_url,
       district,
       upazila,
       bloodGroup,
