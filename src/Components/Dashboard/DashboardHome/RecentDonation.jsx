@@ -61,9 +61,12 @@ const RecentDonation = () => {
       ) : (
         <div className="">
           <div className="flex justify-between items-center  text-base-300  font-bold p-3 bg-black/35 backdrop-blur-sm rounded-t">
-            <h3 className="text-2xl ">Your Recent 3 Requests</h3>
-            <Link to="/dashboard/my-donation-requests" className="flex items-center gap-1.5 mr-5">
-              See All Requests <FaArrowRight />
+            <h3 className="text-2xl bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]">
+              Your <span className="text-white">Recent </span>3 Requests
+            </h3>
+
+            <Link to="/dashboard/my-donation-requests" className="flex items-center gap-1.5 mr-5 bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]">
+              See All Requests <FaArrowRight className="text-yellow-500" />
             </Link>
           </div>
           <div>

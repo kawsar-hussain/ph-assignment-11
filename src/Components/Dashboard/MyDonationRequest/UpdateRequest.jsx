@@ -99,8 +99,10 @@ const UpdateRequest = () => {
   };
   return (
     <div className="flex justify-center items-center ">
-      <div className="max-w-4xl mx-auto p-6  shadow-xl rounded-box bg-black/20 backdrop-blur-sm ">
-        <h2 className="text-2xl font-bold text-center mb-7 text-white">Update Your Request Info</h2>
+      <div className="max-w-4xl mx-auto p-8 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl bg-black/40 backdrop-blur-lg border-t border-l border-white/20 border-b border-r ">
+        <h1 className="text-2xl lg:text-3xl font-black italic tracking-wide text-white uppercase text-center mb-8">
+          Update Your<span className="bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]"> Request</span> Info
+        </h1>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Requester Name */}
@@ -228,7 +230,7 @@ const UpdateRequest = () => {
 
           {/* Submit Button */}
           <div className="mt-6">
-            <button type="submit" className="btn  border-none shadow-none bg-[#ffd4d4] w-full">
+            <button type="submit" className="btn  border-none shadow-none bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] text-white w-full">
               Submit Blood Request
             </button>
           </div>

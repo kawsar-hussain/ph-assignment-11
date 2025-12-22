@@ -60,7 +60,7 @@ const Aside = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-          <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm min-h-screen w-80 p-4">
+          <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm h-screen w-80 p-4">
             {/* Sidebar content here */}
             <Link to="/dashboard/profile" className="relative mx-auto mb-6 group mt-6">
               <div className="absolute inset-0 bg-linear-to-tr from-[#ed4f00] to-[#ff9215] rounded-full blur-lg opacity-40 transition-opacity"></div>

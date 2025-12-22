@@ -3,9 +3,9 @@ import { MdBloodtype, MdOutlineHealthAndSafety, MdTimeline, MdNotificationsActiv
 
 const DashboardHome = () => {
   return (
-    <div className="py-10 text-white">
+    <div className=" text-white">
       {/* stats grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mb-10">
         {[
           { label: "total donations", value: "08", icon: <MdBloodtype />, color: "from-[#dc4900] to-[#ffa41c]" },
           { label: "lives saved", value: "24", icon: <MdOutlineHealthAndSafety />, color: "from-[#ffa41c] to-[#ed4f00]" },

@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-linear-to-tr from-[#dc4900] to-[#ffa41c] shadow-[0_0_20px_rgba(220,73,0,0.3)]">
-              <img src="/logo.png" alt="Logo" className="w-8 h-8 brightness-0 invert" />
+              <img src="/logo.png" alt="Logo" className="w-8 h-8 " />
             </div>
             <span className="text-2xl font-black italic tracking-tighter uppercase">
               Donate<span className="text-[#ffa41c]">X</span>

@@ -54,6 +54,13 @@ const MyDonationRequest = () => {
 
   return (
     <div>
+      <div className="relative py-4 pb-10">
+        <div className="absolute inset-0 bg-[#ed4f00]/10 blur-2xl rounded-full -z-10" />
+        <h1 className="text-2xl lg:text-3xl font-black italic tracking-wide text-white uppercase text-center">
+          Donation <span className="bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]">Requests</span>
+        </h1>
+        <div className="w-24 h-[3px] bg-linear-to-r from-[#ed4f00] to-[#ffbc15] mx-auto mt-2 rounded-full opacity-80" />
+      </div>
       {requests.length < 1 ? (
         <p className="text-white bg-black/15 backdrop-blur-md text-center rounded py-15">You haven't submitted any requests yet.</p>
       ) : (

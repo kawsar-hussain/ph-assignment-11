@@ -61,10 +61,13 @@ const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-black/90 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li className="flex  mb-1 btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
-              <Link to="/dashboard"> Dashboard</Link>
-            </li>
             {li}
+            <li>
+              <Link to="/dashboard" className="flex  mt-1 btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white text-xl border-none shadow-none mr-1 h-12">
+                {" "}
+                Dashboard
+              </Link>
+            </li>
           </ul>
         </div>
         <Link to="/" className="lg:text-2xl text-xl font-bold flex items-center gap-1">
@@ -85,9 +88,9 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center gap-2">
             <div className="flex gap-2 bg-transparent btn shadow-none border-none h-12 px-2">
-              <div className="hidden lg:block btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
-                <Link to="/dashboard"> Dashboard</Link>
-              </div>
+              <Link to="/dashboard" className="hidden lg:flex btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
+                Dashboard
+              </Link>
               <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className="btn shadow-none bg-transparent px-0 border-none">
                   <img src={`${dbUser.photoURL}`} alt="user photo" className="w-10 h-10 object-cover rounded-full border border-[#ffa647]"></img>
