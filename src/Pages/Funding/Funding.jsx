@@ -24,10 +24,10 @@ const Funding = () => {
   };
 
   return (
-    <div className="lg:min-h-[92vh] h-auto ">
+    <div className="lg:min-h-[92vh] h-auto">
       <div className="flex flex-col justify-center items-center h-[92vh] px-5">
         <div className="text-center mb-10 space-y-3">
-          <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter drop-shadow-lg">
+          <h2 className="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter drop-shadow-lg">
             Support <span className="text-yellow-400">DonateX</span>
           </h2>
           <p className="text-white/70 font-bold uppercase tracking-[0.3em] text-xs">Help us save lives together</p>
@@ -37,10 +37,10 @@ const Funding = () => {
         <div className="relative group p-0.5 rounded-[2.5rem] overflow-hidden max-w-xl w-full">
           <div className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ffffff_0%,#ffa41c_50%,#ffffff_100%)] opacity-30"></div>
 
-          <form onSubmit={handleCheckout} className="relative flex flex-col gap-6 bg-black/15 backdrop-blur-2xl p-10 md:p-14 rounded-[2.5rem] border border-white/20 shadow-2xl z-10">
+          <form onSubmit={handleCheckout} className="relative flex flex-col gap-6 bg-black/15 backdrop-blur-2xl p-5 lg:p-10 md:p-14 rounded-[2.5rem] border border-white/20 shadow-2xl z-10">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-white/50 ml-2">Amount to Donate</label>
-              <div className="relative">
+              <label className="text-[10px] font-black uppercase tracking-widest text-white/50 ml-1 ">Amount to Donate</label>
+              <div className="relative mt-2">
                 <input
                   name="donateAmount"
                   type="text"

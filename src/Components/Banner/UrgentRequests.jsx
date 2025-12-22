@@ -8,10 +8,10 @@ const UrgentRequests = () => {
   ];
 
   return (
-    <div className="mb-15 bg-transparent p-6 flex flex-col items-center">
+    <div className="mb-5 lg:mb-15 p-0  lg:p-6 flex flex-col items-center">
       {/* Page Header */}
-      <div className="w-full max-w-4xl mb-10">
-        <h1 className="text-4xl font-black italic tracking-tighter text-white uppercase">
+      <div className="w-full lg:max-w-4xl mb-6 lg:mb-10">
+        <h1 className="text-3xl lg:text-4xl font-black italic tracking-wide text-white uppercase">
           Live <span className="bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]">Emergency</span> Feed
         </h1>
         <p className="text-white/50 italic text-sm mt-2 flex items-center gap-2">
@@ -24,7 +24,7 @@ const UrgentRequests = () => {
       </div>
 
       {/* Request List */}
-      <div className="w-full max-w-4xl space-y-4">
+      <div className="w-full max-w-4xl space-y-3 lg:space-y-4">
         {requests.map((req) => (
           <div key={req.id} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-1 transition-all hover:border-[#ff9215]/50">
             {/* Live Background Glow */}
@@ -32,7 +32,7 @@ const UrgentRequests = () => {
               className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-linear-to-r ${req.urgency === "Critical" ? "from-red-600" : "from-orange-500"} to-transparent`}
             ></div>
 
-            <div className="relative z-10 flex flex-wrap items-center justify-between p-5 gap-4">
+            <div className="relative z-10 flex flex-wrap items-center justify-between p-3 lg:p-5 gap-4">
               {/* Blood Type Badge */}
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-xl bg-linear-to-br from-[#ed4f00] to-[#9e3500] flex items-center justify-center shadow-[0_0_20px_rgba(237,79,0,0.4)]">
@@ -65,7 +65,7 @@ const UrgentRequests = () => {
             </div>
 
             {/* Bottom Scanning Line */}
-            <div className="absolute bottom-0 left-0 h-[1px] w-full bg-linear-to-r from-transparent via-[#ff9215] to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
+            <div className="absolute bottom-0 left-0 h-px w-full bg-linear-to-r from-transparent via-[#ff9215] to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
           </div>
         ))}
       </div>

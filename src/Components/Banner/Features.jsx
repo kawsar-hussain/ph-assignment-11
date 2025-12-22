@@ -26,18 +26,18 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-transparent overflow-hidden">
+    <section className="py-5 lg:py-20 px-4 lg:px-6 bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-4">
+        <div className="mb-7 lg:mb-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter text-white mb-4">
             Advanced <span className="bg-clip-text text-transparent bg-linear-to-tr from-[#ed4f00] to-[#ffbc15]">Saving</span> Features
           </h2>
           <div className="w-24 h-1 bg-linear-to-r from-transparent via-[#ff9215] to-transparent mx-auto"></div>
         </div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8">
           {featureList.map((feature, index) => (
             <div
               key={index}

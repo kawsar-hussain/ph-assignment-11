@@ -54,13 +54,16 @@ const Navbar = () => {
     <nav className="navbar lg:h-[8vh] h-auto bg-[#00000034] backdrop-blur-sm  shadow-sm lg:px-20 pl-1 px-5 sticky top-0 z-50 py-0">
       <div className="flex">
         <div className="dropdown ">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden hover:bg-base-300">
+          <div tabIndex={0} role="button" className="btn bg-transparent text-white border-none shadow-none lg:hidden hover:bg-base-300">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {" "}
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />{" "}
             </svg>
           </div>
           <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-black/90 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <li className="flex  mb-1 btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
+              <Link to="/dashboard"> Dashboard</Link>
+            </li>
             {li}
           </ul>
         </div>
@@ -82,7 +85,7 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center gap-2">
             <div className="flex gap-2 bg-transparent btn shadow-none border-none h-12 px-2">
-              <div className="btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
+              <div className="hidden lg:block btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white border-none shadow-none mr-1 h-9">
                 <Link to="/dashboard"> Dashboard</Link>
               </div>
               <div className="dropdown dropdown-bottom dropdown-end">

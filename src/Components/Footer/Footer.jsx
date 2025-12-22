@@ -5,7 +5,7 @@ import { MdSearch, MdPhone } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="relative mt-20 border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
+    <div className="relative mt-10 lg:mt-15 border-t border-white/5 bg-[#0a0a0a] overflow-hidden">
       {/* top section: main navigation */}
       <footer className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-white">
         {/* brand column */}

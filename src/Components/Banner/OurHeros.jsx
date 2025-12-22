@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const OurHeros = () => {
+const Leaderboard = () => {
   const champions = [
     { name: "Samiul Islam", donations: 42, lives: 126, rank: 1, blood: "O+", status: "Legendary" },
     { name: "Rakib Ahmed", donations: 38, lives: 114, rank: 2, blood: "A-", status: "Elite" },
@@ -9,25 +9,25 @@ const OurHeros = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20 px-6 bg-transparent">
+    <div className="min-h-screen py-5 lg:py-20 px-4 bg-transparent mb-5 ">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-black italic tracking-tighter text-white uppercase mb-4">
+          <h1 className="text-3xl lg:text-5xl font-black italic tracking-tighter text-white uppercase mb-4">
             Donor <span className="pr-2 bg-clip-text text-transparent bg-linear-to-tr from-[#ffa41c] to-[#ed4f00]">Leaderboard</span>
           </h1>
-          <p className="text-white/40 font-medium tracking-[0.2em] uppercase text-xs">Recognizing the top life-savers in our community</p>
+          <p className="text-white/60 font-medium tracking-[0.2em] uppercase text-xs">Recognizing the top life-savers in our community</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-8 mb-7 lg:mb-12 items-end">
           {champions.map((hero, index) => (
             <div
               key={index}
-              className={`relative group rounded-[2.5rem] border border-white/10 bg-black/40 backdrop-blur-3xl p-8 text-center transition-all duration-700 hover:-translate-y-4 ${
+              className={`relative group rounded-[2.5rem] border border-white/10 bg-black/40 backdrop-blur-3xl p-12 text-center transition-all duration-700 hover:-translate-y-4 ${
                 hero.rank === 1 ? "h-[400px] border-[#ffa41c]/40 order-1 md:order-2" : "h-[350px] order-2"
               }`}
             >
               <div
-                className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center font-black italic text-black ${
+                className={`absolute -top-8 left-1/2 -translate-x-1/2 w-15 h-15 rounded-full flex items-center justify-center font-black italic text-black ${
                   hero.rank === 1 ? "bg-[#ffa41c] shadow-[0_0_20px_#ffa41c]" : "bg-gray-400"
                 }`}
               >
@@ -81,4 +81,4 @@ const OurHeros = () => {
   );
 };
 
-export default OurHeros;
+export default Leaderboard;

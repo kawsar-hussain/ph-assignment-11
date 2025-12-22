@@ -9,8 +9,8 @@ const LiveImpact = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-12 px-6">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+    <div className="w-full max-w-7xl mx-auto py-5 lg:py-12 px-3 lg:px-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
         {stats.map((stat, index) => (
           <div
             key={index}

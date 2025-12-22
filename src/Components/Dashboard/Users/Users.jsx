@@ -42,7 +42,7 @@ const Users = () => {
   }
 
   return (
-    <div>
+    <div className="pb-5">
       <div className="flex justify-end mb-8">
         <div className="form-control flex gap-1.5">
           <label className="label">

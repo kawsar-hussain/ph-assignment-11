@@ -120,7 +120,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="lg:h-[92vh] h-auto flex items-center justify-center px-4 md:px-0 py-10">
+    <div className="lg:h-[92vh] h-auto flex items-center justify-center md:px-0">
       {isSubmitting && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
           <div className="flex flex-col items-center">
@@ -132,12 +132,12 @@ const Profile = () => {
 
       <div className="card w-full max-w-3xl bg-black/15 backdrop-blur-sm shadow-xl border border-white/20">
         {/* Profile Header */}
-        <div className="flex justify-between items-center p-6 md:p-8 border-b border-white/15">
+        <div className="flex lg:flex-row flex-col-reverse lg:justify-between gap-4 items-start lg:items-center p-6 md:p-8 border-b border-white/15">
           <div>
             <h2 className="text-xl md:text-2xl font-bold text-white">User Profile</h2>
             <p className="text-base-300 text-sm">Manage your personal information</p>
           </div>
-          <button onClick={() => setIsEditable(!isEditable)} className="btn btn-sm bg-linear-to-tr from-[#dc4900] to-[#ffa41c] border-none text-white shadow-lg">
+          <button onClick={() => setIsEditable(!isEditable)} className="self-end lg:self-auto btn btn-sm bg-linear-to-tr from-[#dc4900] to-[#ffa41c] border-none text-white shadow-lg">
             {isEditable ? (
               "Cancel"
             ) : (
@@ -151,9 +151,9 @@ const Profile = () => {
         <form onSubmit={handleUpdate} className="p-6">
           <div className="flex flex-col gap-8 items-center ">
             {/* Avatar Section */}
-            <div className="border-b flex justify-center gap-7 border-white/10 w-full pb-6">
-              <div className="avatar">
-                <div className="w-24 md:w-40 rounded-full ring-2 ring-[#ffa41c] ring-offset-base-100 ring-offset-2">
+            <div className="border-b flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-7 border-white/10 w-full pb-6">
+              <div className="avatar ">
+                <div className="w-[70%] md:w-40 m-auto rounded-full ring-2 ring-[#ffa41c] ring-offset-base-100 ring-offset-2">
                   <img src={loggedUser.photoURL} alt="User Avatar" />
                 </div>
               </div>
@@ -161,7 +161,7 @@ const Profile = () => {
                 <p className="text-xl font-bold text-white mt-4">{loggedUser.name}</p>
                 {/* Status */}
                 <div className="form-control">
-                  <div className="flex gap-1 items-center h-10 md:h-12">
+                  <div className="flex gap-1 items-center lg:justify-start justify-center h-10 md:h-12">
                     <span className="btn btn-xs bg-[#f59700] border-none shadow-none text-white">{user?.role || "donor"}</span>
                     <span className="btn btn-xs bg-[#00ba00] border-none shadow-none text-white text-xs">Active</span>
                   </div>

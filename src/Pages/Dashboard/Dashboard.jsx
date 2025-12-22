@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div className="lg:h-screen sticky left-0 top-0 z-50">
         <Aside></Aside>
       </div>
-      <div className="w-full px-8 py-10">
+      <div className="w-full px-4 py-7 lg:py-10">
         <Outlet></Outlet>
       </div>
     </div>
