@@ -22,17 +22,17 @@ const Navbar = () => {
   const li = (
     <>
       <li>
-        <NavLink to="/" className="text-[#dfdfdf]">
+        <NavLink to="/" className="text-[#bfbfbf] uppercase">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/donation-requests" className="text-[#dfdfdf]">
+        <NavLink to="/donation-requests" className="text-[#bfbfbf] uppercase">
           Donate
         </NavLink>
       </li>
       <li>
-        <NavLink to="/funding" className="text-[#dfdfdf]">
+        <NavLink to="/funding" className="text-[#bfbfbf] uppercase">
           Funding
         </NavLink>
       </li>
@@ -60,7 +60,7 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />{" "}
             </svg>
           </div>
-          <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-black/90 rounded-box z-1 mt-3 w-52 p-2 shadow">
+          <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-black/90 rounded-box z-1 mt-3 w-52 p-2 shadow *:mb-2 ">
             {li}
             <li>
               <Link to="/dashboard" className="flex  mt-1 btn bg-linear-to-tr from-[#ed4f00] to-[#ff9215] text-white text-xl border-none shadow-none mr-1 h-12">
@@ -125,10 +125,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-2">
-            <Link to="login" className="h-8 btn  shadow-none hover:shadow-none">
+            <Link to="login" className="lg:h-8 btn btn-xs h-6 lg:btn-md  shadow-none hover:shadow-none">
               Login
             </Link>
-            <Link to="register" className="h-8 btn bg-linear-to-tr from-[#dc4900] to-[#ffa41c]  text-white border-none shadow-none hover:shadow-none">
+            <Link to="register" className="lg:h-8 btn btn-xs h-6 lg:btn-md bg-linear-to-tr from-[#dc4900] to-[#ffa41c]  text-white border-none shadow-none hover:shadow-none">
               Sign Up
             </Link>
           </div>

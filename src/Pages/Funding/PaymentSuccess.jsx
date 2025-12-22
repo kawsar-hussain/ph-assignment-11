@@ -17,18 +17,14 @@ const PaymentSuccess = () => {
   return (
     <div className="h-[92vh]">
       <div className="min-h-[90vh] flex items-center justify-center px-3 relative overflow-hidden">
-        {/* Background Animated Blobs */}
         <div className="absolute top-20 left-20 w-64 h-64 bg-[#dc4900]/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-[#ffa41c]/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-        {/* Main Success Card */}
         <div className="relative group max-w-lg w-full">
-          {/* The Spinning Border Effect (Same as your buttons) */}
           <div className="absolute inset-0.5 rounded-3xl overflow-hidden">
             <div className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#dc4900_0%,#ffffff_50%,#ffa41c_100%)] opacity-30"></div>
           </div>
 
           <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 text-center shadow-2xl">
-            {/* Success Icon with Double Ripple */}
             <div className="relative inline-flex mb-6">
               <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></span>
               <span className="absolute inset-2.5 rounded-full bg-green-500 animate-ping opacity-10 [animation-duration:1.5s]"></span>
@@ -37,13 +33,11 @@ const PaymentSuccess = () => {
               </div>
             </div>
 
-            {/* Text Content */}
             <h1 className="text-4xl font-black text-white mb-2 tracking-tight">
               Payment <span className="text-transparent bg-clip-text bg-linear-to-r from-[#dc4900] to-[#ffa41c]">Successful!</span>
             </h1>
             <p className="text-gray-300 text mb-8">Thank you for your contribution. Your donation helps save lives.</p>
 
-            {/* Transaction Info Box */}
             <div className="bg-white/5 rounded-2xl p-4 mb-8 border border-white/5 flex flex-col gap-2">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-300">Transaction ID:</span>
@@ -55,7 +49,7 @@ const PaymentSuccess = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* btn */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/"
@@ -71,7 +65,8 @@ const PaymentSuccess = () => {
           </div>
         </div>{" "}
       </div>
-      {/* Custom Styles for Animations */}
+
+      {/* css */}
       <style jsx>{`
         @keyframes scale {
           0% {

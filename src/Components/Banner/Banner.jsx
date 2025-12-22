@@ -11,7 +11,6 @@ const Banner = () => {
       <div className="flex flex-col px-10 lg:px-6  lg:justify-center lg:items-center gap-5 lg:gap-10">
         {!user && (
           <div className="relative group p-[3px] overflow-hidden rounded-xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 active:scale-95 shadow-[0_0_20px_rgba(220,73,0,0.2)] hover:shadow-[0_20px_40px_rgba(220,73,0,0.5)]">
-            {/* Spinning Light Beam - Speeds up on hover */}
             <div className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] group-hover:animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ed4f00_0%,#ffffff_50%,#991b1b_100%)]"></div>
 
             <Link

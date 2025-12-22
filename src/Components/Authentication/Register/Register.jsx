@@ -75,7 +75,6 @@ const Register = () => {
       }
     );
 
-    console.log(res.data.data.display_url);
     const uploadedPhotoURL = res.data.data.display_url;
 
     const formData = {
@@ -122,95 +121,119 @@ const Register = () => {
   };
 
   return (
-    <div className="lg:h-[92vh] h-auto flex items-center justify-center px-3 md:px-0">
+    <div className="lg:h-[92vh] h-auto py-0 lg:py-15 flex items-center justify-center px-3 md:px-0 ">
       <title>DonateX - Register</title>
 
-      <div className="card w-full max-w-sm shrink-0 bg-[#0000001d] backdrop-blur-sm shadow md:max-w-md">
-        <h2 className="text-center mt-5 font-bold text-white text-lg md:text-xl">Register Your Account</h2>
-        <form onSubmit={handleRegister} className="card-body md:px-6">
-          <fieldset className="fieldset *:w-full">
-            <input type="text" name="name" className="input placeholder-gray-500 input-sm md:input-md" placeholder="Name" required />
-            <input type="email" name="email" className="input placeholder-gray-500 input-sm md:input-md" placeholder="Email" required />
-            <input type="file" name="photo" className="file-input " />
+      <div className="card w-full lg:max-w-sm shrink-0 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl md:max-w-md overflow-hidden my-10">
+        <div className="h-1.5 w-full bg-linear-to-r from-[#ed4f00] to-[#ffbc15]" />
+        <h2 className="text-center mt-8 font-black italic tracking-wide uppercase text-transparent bg-clip-text bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] text-xl md:text-3xl">Register Account</h2>
 
-            {/* Blood Group */}
-            <select name="bloodGroup" className="select">
-              <option value="">Select Blood Group</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB+</option>
-              <option>AB-</option>
-              <option>O+</option>
-              <option>O-</option>
+        <form onSubmit={handleRegister} className="card-body md:px-8 py-8">
+          <fieldset className="fieldset space-y-3 *:w-full">
+            {/* name */}
+            <input
+              type="text"
+              name="name"
+              className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500 rounded-xl transition-all input-md w-full"
+              placeholder="Full Name"
+              required
+            />
+
+            {/* email */}
+            <input
+              type="email"
+              name="email"
+              className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500 rounded-xl transition-all input-md w-full"
+              placeholder="Email Address"
+              required
+            />
+
+            {/* upload photo */}
+            <input type="file" name="photo" className="file-input file-input-bordered bg-white/5 border-white/10 text-gray-400 rounded-xl w-full file-input-sm md:file-input-md" />
+
+            {/* blood group*/}
+            <select name="bloodGroup" className="select bg-white/5 border-white/10 text-base-300 focus:text-white rounded-xl w-full">
+              <option value="" className="bg-base-300">
+                Select Blood Group
+              </option>
+              {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map((group) => (
+                <option key={group} className="bg-base-300">
+                  {group}
+                </option>
+              ))}
             </select>
 
             {/* district */}
-            <select name="district" defaultValue="" className="select">
-              <option value="" disabled>
-                Select Your District
-              </option>
-              {[...districts]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((item, index) => (
-                  <option key={index} value={item?.name}>
-                    {item?.name}
-                  </option>
-                ))}
-            </select>
+            <div className="grid grid-cols-2 gap-2">
+              <select name="district" defaultValue="" className="select bg-white/5 border-white/10 text-gray-400 focus:text-white rounded-xl w-full select-sm md:select-md">
+                <option value="" disabled className="bg-base-300 w-full">
+                  District
+                </option>
+                {[...districts]
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((item, index) => (
+                    <option key={index} value={item?.name} className="bg-base-300">
+                      {item?.name}
+                    </option>
+                  ))}
+              </select>
 
-            {/* upazila */}
-            <select name="upazila" defaultValue="" className="select">
-              <option disabled={true} value="">
-                Select Your Upazila
-              </option>
-              {[...upazilas]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((item, index) => (
-                  <option key={index} value={item?.name}>
-                    {item?.name}
-                  </option>
-                ))}
-            </select>
-            {/* password */}
-            <div className="relative w-full">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className="input placeholder-gray-500 input-bordered input-sm md:input-md w-full pr-10"
-                placeholder="Password"
-                required
-              />
-              {/* toggle Icon */}
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-[16px] hover:text-gray-700">
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
+              {/* upazila */}
+              <select name="upazila" defaultValue="" className="select bg-white/5 border-white/10 text-gray-400 focus:text-white rounded-xl w-full select-sm md:select-md">
+                <option disabled value="" className="bg-base-300">
+                  Upazila
+                </option>
+                {[...upazilas]
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((item, index) => (
+                    <option key={index} value={item?.name} className="bg-base-300">
+                      {item?.name}
+                    </option>
+                  ))}
+              </select>
             </div>
-            {/* confirm password */}
-            <div className="relative w-full">
-              <input
-                type={showPassword ? "text" : "password"}
-                name="confirmPassword"
-                className="input placeholder-gray-500 input-bordered input-sm md:input-md w-full pr-10"
-                placeholder="Confirm Password"
-                required
-              />
-              {/* toggle Icon */}
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-[16px] hover:text-gray-700">
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
-            </div>
-            <p className="text-red-500 text-xs md:text-sm">{error}</p>
 
-            <button type="submit" className="btn mt-4 bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none shadow-none btn-sm md:btn-md">
-              Sign Up
+            {/* password*/}
+            <div className="space-y-3">
+              <div className="relative w-full">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500 rounded-xl transition-all input-md w-full pr-12"
+                  placeholder="Password"
+                  required
+                />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#ffbc15]">
+                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                </button>
+              </div>
+              <div className="relative w-full">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500 rounded-xl transition-all input-md w-full pr-12"
+                  placeholder="Password"
+                  required
+                />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#ffbc15]">
+                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            {error && <p className="text-white/70 text-xs text-center bg-red-500/10 py-2 rounded-lg">{error}</p>}
+
+            <button
+              type="submit"
+              className="btn mt-4 bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] hover:scale-[1.02] active:scale-[0.98] text-white font-black uppercase tracking-widest border-none rounded-xl shadow-lg transition-all h-12"
+            >
+              Sign Up Now
             </button>
           </fieldset>
 
-          <p className="text-center mt-2 text-sm text-gray-100 md:text-base">
+          <p className="text-center text-gray-400 mt-6 text-sm">
             Already have an account?{" "}
-            <Link to="/login" className="underline font-medium text-[#ff8903]">
+            <Link to="/login" className="text-[#ffbc15] font-bold hover:underline decoration-[#ed4f00] underline-offset-4">
               Login
             </Link>
           </p>

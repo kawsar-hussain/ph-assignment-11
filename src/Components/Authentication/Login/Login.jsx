@@ -32,40 +32,59 @@ const Login = () => {
   };
 
   return (
-    <div className="lg:h-[92vh] h-auto flex items-center justify-center bg-cover bg-center px-3 md:px-0">
+    <div className="lg:h-[92vh] h-auto py-10 lg:py-15 flex items-center justify-center bg-cover bg-center px-3 md:px-0">
       <title>DonateX - Login</title>
 
-      <div className="card  rounded-none w-full max-w-sm shrink-0 bg-[#0000001d] backdrop-blur-sm  shadow md:max-w-md">
-        <h2 className="text-center mt-5 font-bold text-white text-lg md:text-xl">Login Your Account </h2>
-        <form onSubmit={handleLogin} className="card-body md:px-6">
-          <fieldset className="fieldset *:w-full">
-            {/* email */}
-            <label className="label text-sm md:text-gray-100">Email</label>
-            <input type="email" name="email" className="input placeholder-gray-500 input-sm md:input-md" placeholder="Email" required />
-            {/* password */}
-            <label className="label text-sm md:text-gray-100">Password</label>
-            <div className="relative w-full">
+      <div className="card w-full lg:max-w-sm shrink-0 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl md:max-w-md overflow-hidden">
+        <div className="h-1.5 w-full bg-linear-to-r from-[#ed4f00] to-[#ffbc15]" />
+        <h2 className="text-center mt-8 font-black italic tracking-wide uppercase text-transparent bg-clip-text bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] text-xl md:text-3xl">Login Your Account</h2>
+        <form onSubmit={handleLogin} className="card-body md:px-8 py-8">
+          <fieldset className="fieldset space-y-4 *:w-full">
+            <div>
+              <label className="label text-xs  text-gray-400 mb-1">Email Address</label>
               <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                className="input placeholder-gray-500 input-bordered input-sm md:input-md w-full pr-10 "
-                placeholder="Password"
+                type="email"
+                name="email"
+                className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500  rounded-xl transition-all input-md w-full"
+                placeholder="name@exmaple.com"
                 required
               />
-              {/* Toggle Icon */}
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-[14px] md:text-[16px] hover:text-gray-700">
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
             </div>
-            {error && <p className="text-red-500 text-xs md:text-sm">{error}</p>}
-            <button type="submit" className="btn mt-4 bg-linear-to-tr from-[#dc4900] to-[#ffa41c] text-white border-none shadow-none btn-sm md:btn-md">
+
+            <div>
+              <label className="label text-xs  text-gray-400 mb-1">Password</label>
+              <div className="relative w-full">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="input bg-white/5 border-white/10 focus:border-[#ed4f00] focus:ring-1 focus:ring-[#ed4f00] text-white placeholder-gray-500 rounded-xl transition-all input-md w-full pr-12"
+                  placeholder="••••••••"
+                  required
+                />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#ffbc15] transition-colors">
+                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
+                <p className="text-red-500 text-xs text-center font-medium">{error}</p>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="btn mt-2 lg:mt-6 bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] hover:scale-[1.02] active:scale-[0.98] text-white  font-black uppercase tracking-widest border-none rounded-xl shadow-lg shadow-[#ed4f00]/20 transition-all h-12"
+            >
               Login
             </button>
           </fieldset>
-          <p className="text-center text-gray-100 mt-2 text-sm md:text-base">
-            Don't have an account? {""}
-            <Link to="/register" className="underline  font-medium text-[#ff8903]">
-              Sign Up
+
+          <p className="text-center text-gray-400 mt-6 text-sm">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-[#ffbc15] font-bold hover:underline decoration-[#ed4f00] underline-offset-4 transition-all">
+              Create Account
             </Link>
           </p>
         </form>

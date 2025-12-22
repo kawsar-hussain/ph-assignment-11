@@ -10,7 +10,7 @@ body {
 }
 
 nav .active {
-  color: #ffa33b;
+  color: white;
   font-weight: bold;
 }
 
@@ -21,7 +21,7 @@ nav .active {
 
 @media (max-width: 600px) {
   nav .active {
-    color: #ffa33b;
+    color: white;
     font-weight: bold;
   }
 }

@@ -23,17 +23,16 @@ const UrgentRequests = () => {
         </p>
       </div>
 
-      {/* Request List */}
+      {/* recent request list */}
       <div className="w-full max-w-4xl space-y-3 lg:space-y-4">
         {requests.map((req) => (
           <div key={req.id} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-1 transition-all hover:border-[#ff9215]/50">
-            {/* Live Background Glow */}
             <div
               className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-linear-to-r ${req.urgency === "Critical" ? "from-red-600" : "from-orange-500"} to-transparent`}
             ></div>
 
             <div className="relative z-10 flex  flex-wrap items-center justify-between p-3 lg:p-5 gap-4">
-              {/* Blood Type Badge */}
+              {/* badge */}
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-xl bg-linear-to-br from-[#ed4f00] to-[#9e3500] flex items-center justify-center shadow-[0_0_20px_rgba(237,79,0,0.4)]">
                   <span className="text-2xl font-black italic text-white">{req.bloodType}</span>
@@ -46,7 +45,7 @@ const UrgentRequests = () => {
                 </div>
               </div>
 
-              {/* Status & Action */}
+              {/* status & action */}
               <div className="flex items-center lg:justify-end justify-between lg:w-auto w-full gap-6 ">
                 <div className="text-right">
                   <span
@@ -64,13 +63,12 @@ const UrgentRequests = () => {
               </div>
             </div>
 
-            {/* Bottom Scanning Line */}
             <div className="absolute bottom-0 left-0 h-px w-full bg-linear-to-r from-transparent via-[#ff9215] to-transparent -translate-x-full animate-[shimmer_4s_infinite]"></div>
           </div>
         ))}
       </div>
 
-      {/* Global CSS needed for the shimmer animation if not already added */}
+      {/* css */}
       <style
         dangerouslySetInnerHTML={{
           __html: `

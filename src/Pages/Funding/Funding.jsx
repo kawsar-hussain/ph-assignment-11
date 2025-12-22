@@ -25,6 +25,7 @@ const Funding = () => {
 
   return (
     <div className="lg:min-h-[92vh] h-auto">
+      <title>DonateX - Funding</title>
       <div className="flex flex-col justify-center items-center h-[92vh] px-5">
         <div className="text-center mb-10 space-y-3">
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter drop-shadow-lg">

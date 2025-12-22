@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Aside from "../../Components/Dashboard/Aside";
 import { Outlet } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Dashboard = () => {
+  const { dbUser } = useContext(AuthContext);
+  useEffect(() => {
+    if (dbUser) {
+      document.title = `DonateX - ${dbUser?.role?.charAt(0).toUpperCase() + dbUser?.role?.slice(1)} Dashboard`;
+    }
+  }, [dbUser]);
   return (
     <div className="bg-[url('/bg.png')] bg-cover bg-center  bg-fixed min-h-screen flex lg:flex-row flex-col">
       <div className="lg:h-screen sticky left-0 top-0 z-50">

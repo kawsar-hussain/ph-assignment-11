@@ -52,7 +52,7 @@ const SearchDonor = () => {
   };
 
   return (
-    <div className="lg:px-20 py-10 px-4 lg:h-[92vh] min-h-[80vh]">
+    <div className="lg:px-20 py-10 px-4 lg:min-h-[92vh] min-h-[80vh]">
       <div className="bg-black/15 backdrop-blur-md py-7 px-5 lg:py-15 rounded-md ">
         <div className="text-center mb-0 lg:mb-14 relative">
           <h3 className="text-4xl lg:text-6xl font-black text-white italic tracking-tight">
@@ -173,7 +173,7 @@ const SearchDonor = () => {
             ))
           ) : (
             <div className="col-span-full py-20 text-center">
-              <p className="text-white/40 italic">Your search result will be appear here.</p>
+              <p className="text-white/60 italic">Your search results will appear here. If no results match, nothing will be shown.</p>
             </div>
           )}
         </AnimatePresence>

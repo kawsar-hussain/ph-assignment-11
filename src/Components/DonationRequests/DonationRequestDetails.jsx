@@ -24,6 +24,12 @@ const DonationRequestDetails = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (request) {
+      document.title = `DonateX - Need ${request.bloodGroup} Blood`;
+    }
+  }, [request]);
+
   if (loading) {
     return <Loader></Loader>;
   }

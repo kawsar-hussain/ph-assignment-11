@@ -21,6 +21,7 @@ const DonationRequests = () => {
   }
   return (
     <div className="lg:px-20 pt-10 px-3 h-auto lg:min-h-[92vh]">
+      <title>DonateX - Donation Requests</title>
       <div className="relative flex flex-col items-center mb-10 lg:mb-16 select-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-20 bg-white/10 blur-[80px] pointer-events-none"></div>
 
