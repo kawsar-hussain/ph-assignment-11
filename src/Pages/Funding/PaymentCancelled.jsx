@@ -4,7 +4,7 @@ import { MdErrorOutline, MdRefresh, MdHome } from "react-icons/md";
 
 const PaymentCancelled = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4  relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-3  relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 

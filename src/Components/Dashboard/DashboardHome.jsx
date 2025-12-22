@@ -30,7 +30,7 @@ const DashboardHome = () => {
           </div>
 
           {/* simple bar visualization */}
-          <div className="flex items-end justify-between h-48 gap-2 px-4 border-b border-white/5">
+          <div className="flex items-end justify-between h-48 gap-2 px-3 border-b border-white/5">
             {[40, 70, 45, 90, 65, 80, 50, 85, 30, 60, 95, 40].map((h, i) => (
               <div key={i} className="group relative w-full">
                 <div

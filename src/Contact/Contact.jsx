@@ -4,7 +4,7 @@ import { IoSendSharp } from "react-icons/io5";
 
 const Contact = () => {
   return (
-    <div className="px-4 flex flex-col items-center">
+    <div className="px-3 flex flex-col items-center">
       {/* 2. CLEAN CONTACT FORM */}
       <div className="max-w-2xl w-full">
         <div className="bg-black/15 backdrop-blur-sm border border-white/10 rounded-4xl lg:rounded-[2.5rem] overflow-hidden">

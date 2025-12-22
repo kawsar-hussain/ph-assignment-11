@@ -52,8 +52,8 @@ const SearchDonor = () => {
   };
 
   return (
-    <div className="lg:px-20 py-10 px-4 lg:h-[92vh] h-[80vh]">
-      <div className="bg-black/15 backdrop-blur-md py-7 lg:py-15 rounded-md">
+    <div className="lg:px-20 py-10 px-4 lg:h-[92vh] min-h-[80vh]">
+      <div className="bg-black/15 backdrop-blur-md py-7 px-5 lg:py-15 rounded-md ">
         <div className="text-center mb-0 lg:mb-14 relative">
           <h3 className="text-4xl lg:text-6xl font-black text-white italic tracking-tight">
             LIVE{" "}
@@ -68,8 +68,8 @@ const SearchDonor = () => {
           <p className="mt-6 text-white/70 font-bold text-xs lg:text-sm tracking-[0.3em] uppercase">connecting donors with hope • search below</p>
         </div>
         {/* filters */}
-        <div className="flex justify-center gap-3 mt-7 flex-wrap ">
-          <div className="flex flex-col lg:flex-row justify-center items-center gap-1 w-full lg:*:w-[250px] ">
+        <div className="flex lg:flex-row flex-col justify-center gap-3 mt-7 flex-wrap ">
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-1 *:w-full lg:*:w-[250px]">
             {/* district */}
             <select name="district" value={district} onChange={(e) => setDistrict(e.target.value)} className="select">
               <option value="">Select Your District</option>

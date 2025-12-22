@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="lg:h-[92vh] h-auto flex items-center justify-center bg-cover bg-center px-4 md:px-0">
+    <div className="lg:h-[92vh] h-auto flex items-center justify-center bg-cover bg-center px-3 md:px-0">
       <title>DonateX - Login</title>
 
       <div className="card  rounded-none w-full max-w-sm shrink-0 bg-[#0000001d] backdrop-blur-sm  shadow md:max-w-md">

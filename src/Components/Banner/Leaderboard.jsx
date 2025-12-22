@@ -9,7 +9,7 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="min-h-screen py-5 lg:py-20 px-4 bg-transparent mb-5 ">
+    <div className="min-h-screen py-5 lg:py-20 px-3 bg-transparent mb-5 ">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-3xl lg:text-5xl font-black italic tracking-tighter text-white uppercase mb-4">
@@ -47,11 +47,11 @@ const Leaderboard = () => {
 
               <div className="grid grid-cols-2 gap-4 border-t border-white/5 pt-6">
                 <div>
-                  <p className="text-[10px] text-white/30 uppercase font-black">Donations</p>
+                  <p className="text-[10px] text-white/60 uppercase font-black">Donations</p>
                   <p className="text-xl font-black text-white">{hero.donations}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-white/30 uppercase font-black">Lives Saved</p>
+                  <p className="text-[10px] text-white/60 uppercase font-black">Lives Saved</p>
                   <p className="text-xl font-black text-[#ed4f00]">{hero.lives}</p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const Leaderboard = () => {
 
         <div className="relative overflow-hidden rounded-3xl bg-linear-to-r from-[#ed4f00] to-[#ffa41c] p-10 text-center shadow-2xl">
           <div className="relative z-10">
-            <h2 className="text-3xl font-black italic text-white uppercase tracking-tighter mb-2">Ready to become a hero?</h2>
+            <h2 className="text-3xl font-black italic text-white uppercase tracking-wide mb-2">Ready to become a hero?</h2>
             <p className="text-white/80 text-sm mb-6 max-w-md mx-auto">Join the ranks of our top donors today and start making a real impact in your city.</p>
             <Link to="/donation-requests" className="px-10 py-3 bg-black text-white font-black italic uppercase tracking-widest text-xs rounded-full hover:scale-110 transition-transform">
               Donate Now

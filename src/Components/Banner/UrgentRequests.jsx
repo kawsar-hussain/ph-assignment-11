@@ -32,7 +32,7 @@ const UrgentRequests = () => {
               className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-linear-to-r ${req.urgency === "Critical" ? "from-red-600" : "from-orange-500"} to-transparent`}
             ></div>
 
-            <div className="relative z-10 flex flex-wrap items-center justify-between p-3 lg:p-5 gap-4">
+            <div className="relative z-10 flex  flex-wrap items-center justify-between p-3 lg:p-5 gap-4">
               {/* Blood Type Badge */}
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 rounded-xl bg-linear-to-br from-[#ed4f00] to-[#9e3500] flex items-center justify-center shadow-[0_0_20px_rgba(237,79,0,0.4)]">
@@ -47,7 +47,7 @@ const UrgentRequests = () => {
               </div>
 
               {/* Status & Action */}
-              <div className="flex items-center gap-6">
+              <div className="flex items-center lg:justify-end justify-between lg:w-auto w-full gap-6 ">
                 <div className="text-right">
                   <span
                     className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${

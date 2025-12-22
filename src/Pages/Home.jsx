@@ -4,12 +4,12 @@ import Contact from "../Contact/Contact";
 import Features from "../Components/Banner/Features";
 import UrgentRequests from "../Components/Banner/UrgentRequests";
 import LiveImpact from "../Components/Banner/LiveImpact";
-import Leaderboard from "../Components/Banner/OurHeros";
+import Leaderboard from "../Components/Banner/Leaderboard";
 
 const Home = () => {
   return (
     <div>
-      <div className="flex lg:flex-row flex-col items-center lg:px-20 py-5 px-4">
+      <div className="flex lg:flex-row flex-col items-center lg:px-20 py-5 px-3">
         <div className="flex-8">
           <UrgentRequests></UrgentRequests>
         </div>

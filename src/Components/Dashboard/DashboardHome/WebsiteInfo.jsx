@@ -39,7 +39,7 @@ const WebsiteInfo = () => {
   }, []);
 
   return (
-    <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 px-4 lg:px-[200px] *:mb-5 ">
+    <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 px-3 lg:px-[200px] *:mb-5 ">
       <div className="bg-linear-to-t from-black/0 via-[#dc4900ba] to-[#ffa41c] text-white text-center py-5 pb-12 rounded-t-md">
         <div className="">
           <h4 className="text-2xl font-bold">Total Users</h4>

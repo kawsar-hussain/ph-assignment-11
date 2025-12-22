@@ -40,7 +40,7 @@ const Footer = () => {
             ].map((group, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white/3 border border-white/5 hover:border-[#dc4900]/30 hover:bg-[#dc4900]/5 hover:text-white transition-all duration-300 group"
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg bg-white/3 border border-white/5 hover:border-[#dc4900]/30 hover:bg-[#dc4900]/5 hover:text-white transition-all duration-300 group"
               >
                 <span className="group-hover:text-[#ffa41c] transition-colors">{group.type}</span>
                 <span className="text-[8px] opacity-30">/</span>

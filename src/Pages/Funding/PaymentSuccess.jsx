@@ -15,8 +15,8 @@ const PaymentSuccess = () => {
   }, [sessionId]);
 
   return (
-    <div className="h-auto lg:h-[92vh]">
-      <div className="min-h-[90vh] flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="h-[92vh]">
+      <div className="min-h-[90vh] flex items-center justify-center px-3 relative overflow-hidden">
         {/* Background Animated Blobs */}
         <div className="absolute top-20 left-20 w-64 h-64 bg-[#dc4900]/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-[#ffa41c]/10 rounded-full blur-3xl animate-pulse delay-700"></div>
@@ -58,10 +58,10 @@ const PaymentSuccess = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                to="/dashboard"
+                to="/"
                 className="flex-1 bg-linear-to-r from-[#dc4900] to-[#ffa41c] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-[#dc4900]/20"
               >
-                Go to Dashboard <FaArrowRight />
+                Go to Home <FaArrowRight />
               </Link>
 
               <button className="flex-1 cursor-pointer bg-white/10 hover:bg-white/20 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all border border-white/10">

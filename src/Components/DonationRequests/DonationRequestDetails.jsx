@@ -29,7 +29,7 @@ const DonationRequestDetails = () => {
   }
 
   return (
-    <div className="lg:px-20 px-4 lg:min-h-[92vh] h-auto pt-10">
+    <div className="lg:px-20 px-3 lg:min-h-[92vh] h-auto pt-10">
       <div className="relative group max-w-2xl mx-auto overflow-hidden rounded-[2.5rem] p-0.5">
         <div className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ffffff_0%,#ffa41c_50%,#ffffff_100%)] opacity-40"></div>
         <div className="relative bg-black/20 backdrop-blur-2xl shadow-2xl text-white border border-white/20 rounded-[2.5rem] z-10 overflow-hidden">
@@ -56,7 +56,7 @@ const DonationRequestDetails = () => {
 
             {request.message && (
               <div className=" bg-white/10 rounded-2xl p-2 py-4 lg:p-4 text-sm italic border-l-4 border-yellow-400 backdrop-blur-md">
-                <p className="px-4 text-gray-100">{request.message}</p>
+                <p className="px-3 text-gray-100">{request.message}</p>
               </div>
             )}
 
