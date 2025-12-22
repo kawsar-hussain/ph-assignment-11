@@ -62,7 +62,11 @@ const router = createBrowserRouter([
 
       {
         path: "funding",
-        element: <Funding></Funding>,
+        element: (
+          <PrivateRoute>
+            <Funding></Funding>
+          </PrivateRoute>
+        ),
       },
       {
         path: "payment-success",

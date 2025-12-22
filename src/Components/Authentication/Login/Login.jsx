@@ -37,7 +37,7 @@ const Login = () => {
 
       <div className="card w-full lg:max-w-sm shrink-0 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl md:max-w-md overflow-hidden">
         <div className="h-1.5 w-full bg-linear-to-r from-[#ed4f00] to-[#ffbc15]" />
-        <h2 className="text-center mt-8 font-black italic tracking-wide uppercase text-transparent bg-clip-text bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] text-xl md:text-3xl">Login Your Account</h2>
+        <h2 className="text-center mt-8 font-black italic tracking-wide uppercase text-transparent bg-clip-text bg-linear-to-tr from-[#ed4f00] to-[#ffbc15] text-xl md:text-2xl">Login Your Account</h2>
         <form onSubmit={handleLogin} className="card-body md:px-8 py-8">
           <fieldset className="fieldset space-y-4 *:w-full">
             <div>
