@@ -1,6 +1,6 @@
 # 🩸 DonateX | Blood Donation & Management System
 
-[**🚀 Click Here to Explore the Live Application**](https://kawsar-hussain-ph-assignment-11.netlify.app/)
+[**🚀 View Live Demo**](https://kawsar-hussain-ph-assignment-11.netlify.app/)
 
 ### _A high-performance, modern web application built to connect blood donors with recipients. **DonateX** features a robust admin command center, real-time donation tracking, and a seamless search experience for life-saving resources._
 
