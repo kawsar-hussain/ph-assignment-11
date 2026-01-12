@@ -16,7 +16,6 @@ import Profile from "../Components/Dashboard/Profile/Profile";
 import DonationRequests from "../Pages/DonationRequests/DonationRequestsPage";
 import Funding from "../Pages/Funding/Funding";
 import DonationRequestDetails from "../Components/DonationRequests/DonationRequestDetails";
-import SearchDonor from "../Components/Banner/SearchDonor";
 import UpdateRequest from "../Components/Dashboard/MyDonationRequest/UpdateRequest";
 import PaymentSuccess from "../Pages/Funding/PaymentSuccess";
 import PaymentCancelled from "../Pages/Funding/PaymentCancelled";
@@ -75,10 +74,6 @@ const router = createBrowserRouter([
       {
         path: "payment-cancelled",
         element: <PaymentCancelled></PaymentCancelled>,
-      },
-      {
-        path: "search-donor",
-        element: <SearchDonor></SearchDonor>,
       },
     ],
   },

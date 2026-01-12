@@ -14,8 +14,6 @@ const Register = () => {
   const [districts, setDistricts] = useState([]);
   const [upazilas, setUpazilas] = useState([]);
 
-  console.log(districts);
-
   // fetch districts
   useEffect(() => {
     axios

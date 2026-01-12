@@ -38,6 +38,14 @@ const Aside = () => {
         console.log(error);
       });
     navigate("/");
+    handleNavClick(); // Close the drawer
+  };
+
+  const handleNavClick = () => {
+    const drawerCheckbox = document.getElementById("my-drawer-3");
+    if (drawerCheckbox) {
+      drawerCheckbox.checked = false;
+    }
   };
 
   return (
@@ -60,9 +68,9 @@ const Aside = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-          <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm h-screen w-80 p-4">
+          <div className="menu lg:bg-black/20 bg-[#00000065] backdrop-blur-2xl lg:backdrop-blur-sm h-screen w-[300px] p-4">
             {/* Sidebar content here */}
-            <Link to="/dashboard/profile" className="relative mx-auto mb-6 group mt-6">
+            <Link to="/dashboard/profile" className="relative mx-auto mb-6 group mt-6 ">
               <div className="absolute inset-0 bg-linear-to-tr from-[#ed4f00] to-[#ff9215] rounded-full blur-lg opacity-40 transition-opacity"></div>
               <img src={dbUser.photoURL} alt="" className="relative w-40 h-40 m-auto object-cover rounded-full border-2 border-white/10 p-1" />
             </Link>
@@ -76,17 +84,17 @@ const Aside = () => {
 
             {/* dashboard link */}
             <div className="flex flex-col gap-1.5 *:text-white *:rounded *:p-2 *:font-semibold *:hover:bg-[#0000003b] aside-div">
-              <NavLink to="/dashboard" className="flex gap-4 items-center" end>
+              <NavLink to="/dashboard" className="flex gap-4 items-center" end onClick={handleNavClick}>
                 <MdOutlineDashboardCustomize className="text-xl" /> Dashboard
               </NavLink>
 
               {/* admin link */}
               {dbUser.role === "admin" && (
                 <>
-                  <NavLink to="/dashboard/all-users" className="flex gap-4 items-center">
+                  <NavLink to="/dashboard/all-users" className="flex gap-4 items-center" onClick={handleNavClick}>
                     <FaUsers className="text-xl" /> Users
                   </NavLink>
-                  <NavLink to="/dashboard/payment-history" className="flex gap-4 items-center">
+                  <NavLink to="/dashboard/payment-history" className="flex gap-4 items-center" onClick={handleNavClick}>
                     <MdHistory className="text-xl" /> Payment History
                   </NavLink>
                 </>
@@ -94,7 +102,7 @@ const Aside = () => {
 
               {/* admin and volunteer link */}
               {(dbUser.role === "admin" || dbUser.role === "volunteer") && (
-                <NavLink to="/dashboard/all-blood-donation-request" className="flex gap-4 items-center">
+                <NavLink to="/dashboard/all-blood-donation-request" className="flex gap-4 items-center" onClick={handleNavClick}>
                   {" "}
                   <VscRequestChanges className="text-xl" /> All Donation Request
                 </NavLink>
@@ -103,26 +111,26 @@ const Aside = () => {
               {/* donor links */}
               {dbUser.role === "donor" && (
                 <>
-                  <NavLink to="/dashboard/create-donation-request" className="flex gap-4 items-center">
+                  <NavLink to="/dashboard/create-donation-request" className="flex gap-4 items-center" onClick={handleNavClick}>
                     {" "}
                     <IoCreateOutline className="text-xl" />
                     Create Donation Request
                   </NavLink>
-                  <NavLink to="/dashboard/my-donation-requests" className="flex gap-4 items-center">
+                  <NavLink to="/dashboard/my-donation-requests" className="flex gap-4 items-center" onClick={handleNavClick}>
                     {" "}
                     <IoIosGitPullRequest className="text-xl" /> My Donation Request
                   </NavLink>
                 </>
               )}
 
-              <NavLink to="/dashboard/profile" className="flex gap-4 items-center">
+              <NavLink to="/dashboard/profile" className="flex gap-4 items-center" onClick={handleNavClick}>
                 <FaRegUserCircle className="text-xl" /> Profile
               </NavLink>
             </div>
 
             {/* home and logout */}
             <div className="absolute bottom-6 text-white">
-              <Link to="/" className="flex text-md gap-2 mb-3">
+              <Link to="/" className="flex text-md gap-2 mb-3" onClick={handleNavClick}>
                 {" "}
                 <HiOutlineHome className="text-xl " /> Home
               </Link>

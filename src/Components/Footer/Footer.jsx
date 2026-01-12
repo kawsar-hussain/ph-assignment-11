@@ -60,8 +60,8 @@ const Footer = () => {
         <div>
           <h6 className="text-sm font-black uppercase tracking-[0.2em] mb-6 text-white">Navigation</h6>
           <nav className="flex flex-col gap-3">
-            {[{ name: "Home", path: "/" }, { name: "Donation Requests", path: "/donation-requests" }, { name: "Health Tips" }, { name: "Funding", path: "/funding" }].map((link) => (
-              <Link key={link.path} to={link.path} className="text-sm text-white/40 hover:text-[#ffa41c] hover:translate-x-1 transition-all italic font-medium">
+            {[{ name: "Home", path: "/" }, { name: "Donation Requests", path: "/donation-requests" }, { name: "Health Tips" }, { name: "Funding", path: "/funding" }].map((link, index) => (
+              <Link key={index} to={link.path} className="text-sm text-white/40 hover:text-[#ffa41c] hover:translate-x-1 transition-all italic font-medium">
                 {link.name}
               </Link>
             ))}
