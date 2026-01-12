@@ -36,6 +36,16 @@ const Navbar = () => {
           Funding
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/about" className="text-[#bfbfbf] uppercase">
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/contact" className="text-[#bfbfbf] uppercase">
+          Contact
+        </NavLink>
+      </li>
     </>
   );
 

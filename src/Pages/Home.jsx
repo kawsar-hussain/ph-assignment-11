@@ -1,5 +1,4 @@
 import React from "react";
-import Contact from "../Contact/Contact";
 import Features from "../Components/Banner/Features";
 import UrgentRequests from "../Components/Banner/UrgentRequests";
 import LiveImpact from "../Components/Banner/LiveImpact";
@@ -16,7 +15,6 @@ const Home = () => {
       <LiveImpact></LiveImpact>
       <Features></Features>
       <Leaderboard></Leaderboard>
-      <Contact></Contact>
     </div>
   );
 };
